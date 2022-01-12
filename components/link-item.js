@@ -32,9 +32,9 @@ const Wrapper = styled.span`
 const LinkItem = ({ href, path, children, target, ...props }) => {
   const active = path === href; //current path = href
   const navbarColor = useColorModeValue("blue.400", "violet");
-  const activeColor = useColorModeValue("#fff", "#202020");
+  const activeColor = useColorModeValue("#f7fafc", "#202020");
   const inactiveColor = useColorModeValue("blackAlpha.900", "whiteAlpha.900");
-  const underlineBgColor = useColorModeValue("#000", "#fff");
+  const underlineBgColor = useColorModeValue("#1a202c", "#f7fafc");
 
   return (
     <NextLink href={href} passHref>

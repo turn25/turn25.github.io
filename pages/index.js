@@ -1,13 +1,24 @@
+import NextLink from "next/link";
 import {
   Container,
   Box,
+  Center,
   Heading,
   Text,
+  Button,
   Image,
+  Link,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { ChevronRightIcon } from "@chakra-ui/icons";
 
 import TypeWritter from "../components/typewriter";
+import Section from "../components/section";
+import Paragraph from "../components/paragraph";
+import {
+  EducationSection,
+  EducationYear,
+} from "../components/education-section";
 
 const Page = () => {
   const boxBg = useColorModeValue("whiteAlpha.600", "whiteAlpha.200");
@@ -49,7 +60,6 @@ const Page = () => {
           align="center"
         >
           <Image
-            // src="/images/profile_picture.png"
             src={avatarImg}
             alt="Profile Picture"
             borderRadius="full"
@@ -61,6 +71,51 @@ const Page = () => {
           />
         </Box>
       </Box>
+
+      {/* Section */}
+      <Section delay={0.1}>
+        <Heading as="h3" variant="section-title">
+          About Me
+        </Heading>
+        <Paragraph>
+          I&#39;m a college student and a front-end web developer. Currently,
+          I&#39;m studying at University of Information Technology&nbsp;
+          <Link href="https://www.uit.edu.vn/">(UIT)</Link>.
+        </Paragraph>
+
+        <Center my={5}>
+          <NextLink href="/works">
+            <Button
+              rightIcon={<ChevronRightIcon />}
+              colorScheme={useColorModeValue("blue", "gray")}
+            >
+              My Works
+            </Button>
+          </NextLink>
+        </Center>
+      </Section>
+
+      <Section delay={0.2}>
+        <Heading as="h3" variant="section-title">
+          Education
+        </Heading>
+        <EducationSection>
+          <EducationYear>2007</EducationYear>
+          Lê Đình Chinh Primary School
+        </EducationSection>
+        <EducationSection>
+          <EducationYear>2012</EducationYear>
+          Diên Hồng Junior High School
+        </EducationSection>
+        <EducationSection>
+          <EducationYear>2016</EducationYear>
+          Nguyễn Khuyến High School
+        </EducationSection>
+        <EducationSection>
+          <EducationYear>2019</EducationYear>
+          Started studying at UIT.
+        </EducationSection>
+      </Section>
     </Container>
   );
 };

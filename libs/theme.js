@@ -14,15 +14,15 @@ const styles = {
 const components = {
   Heading: {
     variants: {
-      "section-title": {
+      "section-title": (props) => ({
         textDecoration: "underline",
         fontSize: 20,
         textUnderlineOffset: 6,
-        textDecorationColor: "#505050",
+        textDecorationColor: mode("#1a202c", "#f7fafc90")(props),
         textDecorationThickness: 4,
         marginTop: 3,
         marginBottom: 4,
-      },
+      }),
     },
   },
   // Update base style
@@ -32,6 +32,12 @@ const components = {
     }),
   },
   Link: {
+    baseStyle: (props) => ({
+      color: mode("#3d7aed", "#ff63c3")(props),
+    }),
+  },
+
+  CloseButton: {
     baseStyle: (props) => ({
       color: mode("#3d7aed", "#ff63c3")(props),
     }),

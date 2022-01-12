@@ -4,7 +4,7 @@ import { Text, useColorModeValue } from "@chakra-ui/react";
 import { LogoBox } from "./logo-box";
 
 const Logo = () => {
-  const underlineBgColor = useColorModeValue("#000", "#fff");
+  const underlineBgColor = useColorModeValue("#1a202c", "#f7fafc");
   const handImg = `/images/hand${useColorModeValue("", "-dark")}.png`;
   const textColor = useColorModeValue("gray.800", "whiteAlpha.900");
 

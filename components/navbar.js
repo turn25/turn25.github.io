@@ -1,9 +1,10 @@
-import { useRef } from "react";
+import { useState, useRef } from "react";
 import NextLink from "next/link";
 import {
   Container,
   Box,
   Stack,
+  VStack,
   Flex,
   Heading,
   Button,
@@ -25,9 +26,12 @@ import { RiHomeLine, RiStackLine, RiGithubFill } from "react-icons/ri";
 import Logo from "./logo";
 import ColorModeToggleButton from "./color-mode-switcher";
 import LinkItem from "./link-item";
+import CustomLoader from "./custom-loader.js";
 import Footer from "./footer";
 
 const Navbar = ({ path }) => {
+  const [currLoader, setCurrLoader] = useState(0);
+  const [isSelectLoader, setIsSelectLoader] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
 
@@ -44,7 +48,7 @@ const Navbar = ({ path }) => {
       w="100vw"
       h="60px"
       bg={navbarBgColor}
-      css={{ backdropFilter: "blur(10px)" }}
+      backdropFilter="blur(6px)"
       z-index={10}
     >
       <Container
@@ -57,7 +61,7 @@ const Navbar = ({ path }) => {
       >
         {/* Logo */}
         <Flex align="center" justify="center" mr={5}>
-          <Heading as="h1" size="lg" letterSpacing={"tighter"}>
+          <Heading as="h1" size="lg" letterSpacing="tight">
             <Logo />
           </Heading>
         </Flex>
@@ -95,9 +99,9 @@ const Navbar = ({ path }) => {
 
         <Box flex={1} align="right">
           {/* Color Mode Toggle Button */}
-
           <ColorModeToggleButton />
-          <Box ml={2} display={{ base: "inline-block", md: "none" }}>
+
+          <Box ml={2} display="inline-flex">
             <Box>
               <IconButton
                 aria-label="Drawer Options"
@@ -125,38 +129,47 @@ const Navbar = ({ path }) => {
                   </DrawerHeader>
 
                   <DrawerBody mt={10}>
-                    <Stack direction="column" spacing={4}>
-                      <NextLink href="/" passHref>
-                        <Button
-                          as={Link}
-                          onClick={onClose}
-                          leftIcon={<RiHomeLine />}
-                          _focus={{ boxShadow: activeNavBar }}
-                        >
-                          About
-                        </Button>
-                      </NextLink>
-                      <NextLink href="/works" passHref>
-                        <Button
-                          as={Link}
-                          onClick={onClose}
-                          leftIcon={<RiStackLine />}
-                          _focus={{ boxShadow: activeNavBar }}
-                        >
-                          Works
-                        </Button>
-                      </NextLink>
+                    <VStack align="stretch" spacing={32}>
+                      <VStack align="stretch" spacing={4} flex={1}>
+                        <NextLink href="/" passHref>
+                          <Button
+                            as={Link}
+                            onClick={onClose}
+                            leftIcon={<RiHomeLine />}
+                            _focus={{ boxShadow: activeNavBar }}
+                          >
+                            About
+                          </Button>
+                        </NextLink>
+                        <NextLink href="/works" passHref>
+                          <Button
+                            as={Link}
+                            onClick={onClose}
+                            leftIcon={<RiStackLine />}
+                            _focus={{ boxShadow: activeNavBar }}
+                          >
+                            Works
+                          </Button>
+                        </NextLink>
 
-                      <Button
-                        as={Link}
-                        onClick={onClose}
-                        leftIcon={<RiGithubFill />}
-                        href="https://github.com/vuquangtuan123"
-                        _focus={{ boxShadow: activeNavBar }}
-                      >
-                        My Github
-                      </Button>
-                    </Stack>
+                        <Button
+                          as={Link}
+                          onClick={onClose}
+                          leftIcon={<RiGithubFill />}
+                          href="https://github.com/vuquangtuan123"
+                          _focus={{ boxShadow: activeNavBar }}
+                        >
+                          My Github
+                        </Button>
+                      </VStack>
+                      <CustomLoader
+                        activeNavBar={activeNavBar}
+                        currLoader={currLoader}
+                        setCurrLoader={setCurrLoader}
+                        isSelectLoader={isSelectLoader}
+                        setIsSelectLoader={setIsSelectLoader}
+                      />
+                    </VStack>
                   </DrawerBody>
 
                   <DrawerFooter
