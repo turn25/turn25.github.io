@@ -21,7 +21,7 @@ const Wrapper = styled.span`
     opacity: 1;
     transform: scaleX(0);
     transform-origin: left center; /* transform: start from left */
-    transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
+    transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.05s;
   }
   &:hover::after {
     opacity: 1;
@@ -35,6 +35,7 @@ const LinkItem = ({ href, path, children, target, ...props }) => {
   const activeColor = useColorModeValue("#f7fafc", "#202020");
   const inactiveColor = useColorModeValue("blackAlpha.900", "whiteAlpha.900");
   const underlineBgColor = useColorModeValue("#1a202c", "#f7fafc");
+  const activeUnderlineBgColor = useColorModeValue("#f7fafc", "#1a202c");
 
   return (
     <NextLink href={href} passHref>
@@ -43,9 +44,13 @@ const LinkItem = ({ href, path, children, target, ...props }) => {
         bg={active ? navbarColor : undefined}
         color={active ? activeColor : inactiveColor}
         target={target}
+        borderRadius="sm"
         {...props} //other props
       >
-        <Wrapper underlineBgColor={underlineBgColor} style={{ gap: 5 }}>
+        <Wrapper
+          underlineBgColor={active ? activeUnderlineBgColor : underlineBgColor}
+          style={{ gap: 5 }}
+        >
           {children}
         </Wrapper>
       </Link>

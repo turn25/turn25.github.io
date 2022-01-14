@@ -6,7 +6,7 @@ import Footer from "../footer";
 
 const MainLayout = ({ children, router }) => {
   return (
-    <Box as="main">
+    <Box as="main" h="100vh" display="flex" flexDir="column">
       <Head>
         {/* meta tags */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -23,11 +23,11 @@ const MainLayout = ({ children, router }) => {
 
       <Navbar path={router.asPath} />
 
-      <Container maxW="container.sm" pt={14}>
+      <Container maxW="container.sm" pt={14} flex={1}>
         {children}
-
-        <Footer />
       </Container>
+
+      <Footer />
     </Box>
   );
 };

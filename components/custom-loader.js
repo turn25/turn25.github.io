@@ -6,7 +6,6 @@ import {
   ClockLoader,
   HashLoader,
   DotLoader,
-  BounceLoader,
 } from "react-spinners";
 import { css } from "@emotion/react";
 import {
@@ -26,9 +25,15 @@ import { FaSun, FaMoon } from "react-icons/fa";
 const override = css`
   display: block;
   margin: 0 auto;
+  opacity: 60%;
+  transition: 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.05s;
+
+  &:hover {
+    opacity: 100%;
+  }
 `;
 const loaderSize = 120;
-const currLoaderLength = 6;
+const currLoaderLength = 5;
 
 const CustomLoader = ({
   activeNavBar,
@@ -45,12 +50,11 @@ const CustomLoader = ({
     if (!isSelectLoader) {
       setRandomLoader();
     }
-    return;
   }, [isSelectLoader]);
 
-  const color = useColorModeValue("#3d7aed", "#ff63c3");
+  const color = useColorModeValue("#3d7aed", "#ff7acc");
   const sliderIcon = useColorModeValue(FaSun, FaMoon);
-  const sliderColor = useColorModeValue("#3d7aed", "#ff63c3");
+  const sliderColor = useColorModeValue("#3d7aed", "#ff7acc");
 
   const handlePrevBtn = () => {
     setIsSelectLoader(true);
@@ -131,16 +135,6 @@ const CustomLoader = ({
             case 5:
               return (
                 <DotLoader
-                  color={color}
-                  css={override}
-                  speedMultiplier={speed}
-                  size={loaderSize}
-                />
-              );
-
-            case 6:
-              return (
-                <BounceLoader
                   color={color}
                   css={override}
                   speedMultiplier={speed}

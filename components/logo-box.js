@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const LogoBox = styled.span`
+export const LogoBox = styled.a`
   font-weight: bold;
   font-size: 20px;
   display: flex;
@@ -9,6 +9,7 @@ export const LogoBox = styled.span`
   height: 30px;
   line-height: 18px;
   padding: 10px;
+  cursor: pointer;
 
   p {
     position: relative;
@@ -26,21 +27,22 @@ export const LogoBox = styled.span`
       opacity: 0;
       transform: scaleX(0);
       transform-origin: left center; /* transform: start from left */
-      transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
-    }
-    &:hover::after {
-      opacity: 1;
-      transform: scaleX(1);
+      transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.05s;
     }
   }
 
   img {
     opacity: 90%;
-    transition: 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
+    transition: 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.05s;
+  }
 
-    &:hover {
-      transform: rotate(5deg);
-      opacity: 100%;
-    }
+  &:hover img {
+    transform: rotate(6deg) scale(1.025);
+    opacity: 100%;
+  }
+
+  &:hover p::after {
+    opacity: 1;
+    transform: scaleX(1);
   }
 `;

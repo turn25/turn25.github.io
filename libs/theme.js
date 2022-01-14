@@ -28,18 +28,18 @@ const components = {
   // Update base style
   Button: {
     baseStyle: (props) => ({
-      color: mode("#3d7aed", "#ff63c3")(props),
+      color: mode("#3d7aed", "#ff7acc")(props),
     }),
   },
   Link: {
     baseStyle: (props) => ({
-      color: mode("#3d7aed", "#ff63c3")(props),
+      color: mode("#3d7aed", "#ff7acc")(props),
     }),
   },
 
   CloseButton: {
     baseStyle: (props) => ({
-      color: mode("#3d7aed", "#ff63c3")(props),
+      color: mode("#3d7aed", "#ff7acc")(props),
     }),
   },
 };

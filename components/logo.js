@@ -9,21 +9,19 @@ const Logo = () => {
   const textColor = useColorModeValue("gray.800", "whiteAlpha.900");
 
   return (
-    <Link href="/">
-      <a>
-        <LogoBox underlineBgColor={underlineBgColor}>
-          <Image src={handImg} alt="Logo" width={20} height={20} />
-          <Text
-            color={textColor}
-            fontFamily="Gothic A1"
-            fontWeight="bold"
-            mx={3}
-            mt={1}
-          >
-            Tuan Vu
-          </Text>
-        </LogoBox>
-      </a>
+    <Link href="/" passHref>
+      <LogoBox underlineBgColor={underlineBgColor}>
+        <Image src={handImg} alt="Logo" width={20} height={20} />
+        <Text
+          color={textColor}
+          fontFamily="Gothic A1"
+          fontWeight="bold"
+          mx={3}
+          mt={1}
+        >
+          Tuan Vu
+        </Text>
+      </LogoBox>
     </Link>
   );
 };

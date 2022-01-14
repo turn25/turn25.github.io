@@ -1,8 +1,10 @@
+import { chakra } from "@chakra-ui/react";
 import Typewriter from "typewriter-effect";
 
-const TypeWritter = ({}) => {
+const TypeWritter = ({ ...props }) => {
   return (
-    <span style={{}}>
+    // converts non-chakra components to chakra-enabled components
+    <chakra.span {...props}>
       <Typewriter
         options={{
           strings: ["Developer", "Designer"],
@@ -10,9 +12,10 @@ const TypeWritter = ({}) => {
           loop: true,
           delay: "180",
           deleteSpeed: "180",
+          cursor: "|",
         }}
       />
-    </span>
+    </chakra.span>
   );
 };
 

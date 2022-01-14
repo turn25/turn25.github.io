@@ -20,6 +20,7 @@ import {
   useColorModeValue,
   useDisclosure,
 } from "@chakra-ui/react";
+import { motion, AnimatePresence } from "framer-motion";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { RiHomeLine, RiStackLine, RiGithubFill } from "react-icons/ri";
 
@@ -28,6 +29,12 @@ import ColorModeToggleButton from "./color-mode-switcher";
 import LinkItem from "./link-item";
 import CustomLoader from "./custom-loader.js";
 import Footer from "./footer";
+
+const variants = {
+  hidden: { opacity: 0 },
+  enter: { opacity: 1 },
+  exit: { opacity: 0 },
+};
 
 const Navbar = ({ path }) => {
   const [currLoader, setCurrLoader] = useState(0);
@@ -39,25 +46,25 @@ const Navbar = ({ path }) => {
     "0 0 0 3px rgba(10, 125, 230, 0.6)",
     "0 0 0 3px rgba(160, 125, 230, 0.6)"
   );
-  const navbarBgColor = useColorModeValue("#ffffff60", "#20202080");
+  const navbarBgColor = useColorModeValue("#ffffff75", "#4a556825");
+  const scrollbarThumbBg = useColorModeValue("#00000060", "#ffffff60");
 
   return (
     <Box
       as="nav"
       position="fixed"
       w="100vw"
-      h="60px"
+      h="64px"
       bg={navbarBgColor}
-      backdropFilter="blur(6px)"
-      z-index={10}
+      backdropFilter="blur(5px)"
+      zIndex={10}
     >
       <Container
         maxW="container.lg"
         display="flex"
-        flexWrap="wrap"
+        height="100%"
         alignItems="center"
-        justifyContent="between"
-        p={3}
+        px={4}
       >
         {/* Logo */}
         <Flex align="center" justify="center" mr={5}>
@@ -69,9 +76,8 @@ const Navbar = ({ path }) => {
         <Stack
           direction={{ base: ":column", md: "row" }}
           display={{ base: "none", md: "flex" }}
-          width="auto"
+          flex={1}
           align="center"
-          flexGrow={1}
           mt={{ base: 4, md: 0 }}
         >
           <LinkItem
@@ -99,18 +105,41 @@ const Navbar = ({ path }) => {
 
         <Box flex={1} align="right">
           {/* Color Mode Toggle Button */}
-          <ColorModeToggleButton />
-
+          <AnimatePresence exitBeforeEnter initial={false}>
+            <motion.span
+              key={isOpen}
+              initial="hidden"
+              animate="enter"
+              exit="exit"
+              variants={variants}
+              transition={{ duration: 0.5, type: "easeInOut" }}
+            >
+              {!isOpen && <ColorModeToggleButton />}
+            </motion.span>
+          </AnimatePresence>
           <Box ml={2} display="inline-flex">
             <Box>
-              <IconButton
-                aria-label="Drawer Options"
-                icon={<HamburgerIcon />}
-                variant="outline"
-                onClick={onOpen}
-                ref={btnRef}
-                _focus={{ boxShadow: activeNavBar }}
-              />
+              <AnimatePresence exitBeforeEnter initial={false}>
+                <motion.span
+                  key={isOpen}
+                  initial="hidden"
+                  animate="enter"
+                  exit="exit"
+                  variants={variants}
+                  transition={{ duration: 0.5, delay: 0.05, type: "easeInOut" }}
+                >
+                  {!isOpen && (
+                    <IconButton
+                      aria-label="Drawer Options"
+                      icon={<HamburgerIcon />}
+                      variant="outline"
+                      onClick={onOpen}
+                      ref={btnRef}
+                      _focus={{ boxShadow: activeNavBar }}
+                    />
+                  )}
+                </motion.span>
+              </AnimatePresence>
 
               <Drawer
                 isOpen={isOpen}
@@ -128,8 +157,25 @@ const Navbar = ({ path }) => {
                     <ColorModeToggleButton />
                   </DrawerHeader>
 
-                  <DrawerBody mt={10}>
-                    <VStack align="stretch" spacing={32}>
+                  <DrawerBody
+                    mt={10}
+                    //override custom scrollbar
+                    overflow="overlay" //overlay scrollbar, not consume space
+                    css={{
+                      "&::-webkit-scrollbar": {
+                        width: "9px",
+                      },
+                      "&::-webkit-scrollbar-thumb": {
+                        background: scrollbarThumbBg,
+                        border: "3px solid transparent",
+                        backgroundClip: "padding-box",
+                      },
+                      "&::-webkit-scrollbar-track": {
+                        background: "transparent",
+                      },
+                    }}
+                  >
+                    <VStack align="stretch" spacing={28}>
                       <VStack align="stretch" spacing={4} flex={1}>
                         <NextLink href="/" passHref>
                           <Button
