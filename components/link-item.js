@@ -1,5 +1,5 @@
 import NextLink from "next/link";
-import { Link, useColorModeValue } from "@chakra-ui/react";
+import { Button, Link, useColorModeValue } from "@chakra-ui/react";
 import styled from "@emotion/styled";
 
 const Wrapper = styled.span`
@@ -29,11 +29,15 @@ const Wrapper = styled.span`
   }
 `;
 
-const LinkItem = ({ href, path, children, target, ...props }) => {
-  const active = path === href; //current path = href
-  const navbarColor = useColorModeValue("blue.400", "violet");
+export const LinkItem = ({ href, path, children, target, ...props }) => {
+  const isActive = path === href; //current path = href
+  // text, icon color
   const activeColor = useColorModeValue("#f7fafc", "#202020");
   const inactiveColor = useColorModeValue("blackAlpha.900", "whiteAlpha.900");
+  // bg color
+  const navbarColor = useColorModeValue("blue.400", "violet.400");
+  const hoverActiveBgColor = useColorModeValue("blue.500", "violet.500");
+  // underline color
   const underlineBgColor = useColorModeValue("#1a202c", "#f7fafc");
   const activeUnderlineBgColor = useColorModeValue("#f7fafc", "#1a202c");
 
@@ -41,14 +45,23 @@ const LinkItem = ({ href, path, children, target, ...props }) => {
     <NextLink href={href} passHref>
       <Link
         p={2}
-        bg={active ? navbarColor : undefined}
-        color={active ? activeColor : inactiveColor}
+        bg={isActive ? navbarColor : undefined}
+        color={isActive ? activeColor : inactiveColor}
         target={target}
         borderRadius="sm"
+        _hover={{
+          background: isActive ? hoverActiveBgColor : undefined,
+        }}
+        _active={{
+          background: isActive ? hoverActiveBgColor : undefined,
+        }}
+        transition="all 500ms ease-in-out"
         {...props} //other props
       >
         <Wrapper
-          underlineBgColor={active ? activeUnderlineBgColor : underlineBgColor}
+          underlineBgColor={
+            isActive ? activeUnderlineBgColor : underlineBgColor
+          }
           style={{ gap: 5 }}
         >
           {children}
@@ -58,4 +71,43 @@ const LinkItem = ({ href, path, children, target, ...props }) => {
   );
 };
 
-export default LinkItem;
+export const DrawerLinkBtn = ({
+  href,
+  path,
+  children,
+  onClick,
+  leftIcon,
+  target,
+  ...props
+}) => {
+  const isActive = path === href; //current path = href
+  // text, icon color
+  const activeColor = useColorModeValue("#f7fafc", "#202020");
+  // bg color
+  const activeBgColor = useColorModeValue("blue.400", "violet.400");
+  const hoverActiveBgColor = useColorModeValue("blue.500", "violet.500");
+  const hoverInactiveBgColor = useColorModeValue("gray.200", "gray.600");
+
+  return (
+    <NextLink href={href} passHref>
+      <Button
+        color={isActive ? activeColor : undefined}
+        bg={isActive ? activeBgColor : undefined}
+        fontWeight={isActive ? "bold" : "normal"}
+        as={Link}
+        onClick={onClick}
+        leftIcon={leftIcon}
+        target={target}
+        _hover={{
+          background: isActive ? hoverActiveBgColor : hoverInactiveBgColor,
+        }}
+        _active={{
+          background: isActive ? hoverActiveBgColor : hoverInactiveBgColor,
+        }}
+        {...props}
+      >
+        {children}
+      </Button>
+    </NextLink>
+  );
+};

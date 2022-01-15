@@ -13,10 +13,6 @@ const ColorModeToggleButton = () => {
 
   const icon = useColorModeValue(<MoonIcon />, <SunIcon />);
   const colorSchemeValue = useColorModeValue("purple", "orange");
-  const activeBtn = useColorModeValue(
-    "0 0 0 3px rgba(10, 125, 230, 0.4)",
-    "0 0 0 3px rgba(110, 125, 230, 0.8)"
-  );
 
   return (
     <AnimatePresence exitBeforeEnter initial={false}>
@@ -34,7 +30,6 @@ const ColorModeToggleButton = () => {
           colorScheme={colorSchemeValue}
           icon={icon}
           onClick={toggleColorMode}
-          _focus={{ boxShadow: activeBtn }}
         />
       </motion.div>
     </AnimatePresence>

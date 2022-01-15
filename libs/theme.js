@@ -1,5 +1,5 @@
 // theme.js
-import { extendTheme, ModalHeader } from "@chakra-ui/react";
+import { extendTheme } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 
 const styles = {
@@ -29,17 +29,39 @@ const components = {
   Button: {
     baseStyle: (props) => ({
       color: mode("#3d7aed", "#ff7acc")(props),
+      // outline
+      _focus: {
+        boxShadow: mode(
+          "0 0 0 3px rgba(10, 125, 230, 0.6)",
+          "0 0 0 3px rgba(160, 125, 230, 0.6)"
+        )(props),
+      },
     }),
   },
+
   Link: {
     baseStyle: (props) => ({
       color: mode("#3d7aed", "#ff7acc")(props),
+      // outline
+      _focus: {
+        boxShadow: mode(
+          "0 0 0 3px rgba(10, 125, 230, 0.6)",
+          "0 0 0 3px rgba(160, 125, 230, 0.6)"
+        )(props),
+      },
     }),
   },
 
   CloseButton: {
     baseStyle: (props) => ({
       color: mode("#3d7aed", "#ff7acc")(props),
+      // outline
+      _focus: {
+        boxShadow: mode(
+          "0 0 0 3px rgba(10, 125, 230, 0.6)",
+          "0 0 0 3px rgba(160, 125, 230, 0.6)"
+        )(props),
+      },
     }),
   },
 };
@@ -49,12 +71,18 @@ const fonts = {
 };
 
 const colors = {
-  violet: "#c76dc4",
+  violet: {
+    50: "#ffd9fe",
+    100: "#f0b1ee",
+    200: "#d687d4",
+    300: "#cf7acc",
+    400: "#c76dc4",
+    500: "#bd51b9",
+  },
 };
 
 const config = {
-  initialColorMode: "dark",
-  useSystemColorMode: "true",
+  useSystemColorMode: true,
 };
 
 const theme = extendTheme({

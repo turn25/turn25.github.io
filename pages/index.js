@@ -1,5 +1,6 @@
 import NextLink from "next/link";
 import {
+  chakra,
   Container,
   Box,
   Center,
@@ -7,9 +8,25 @@ import {
   Button,
   Image,
   Link,
+  List,
+  ListItem,
+  Tooltip,
+  SimpleGrid,
   useColorModeValue,
+  useDisclosure,
 } from "@chakra-ui/react";
+import { AnimatePresence, motion, useCycle } from "framer-motion";
 import { ChevronRightIcon } from "@chakra-ui/icons";
+import {
+  RiMusic2Fill,
+  RiGameFill,
+  RiTwitterFill,
+  RiGithubFill,
+} from "react-icons/ri";
+import { AiFillRead } from "react-icons/ai";
+import { MdMovieFilter } from "react-icons/md";
+import { GiDonut } from "react-icons/gi";
+import { FaGuitar } from "react-icons/fa";
 
 import TypeWritter from "../components/typewriter";
 import Section from "../components/section";
@@ -18,9 +35,18 @@ import {
   EducationSection,
   EducationYear,
 } from "../components/education-section";
+import HobbyItem from "../components/hobby-item";
 import Layout from "../components/layouts/layout";
 
+const StyledBox = chakra(motion.div);
+
 const Page = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [animate, cycle] = useCycle(
+    { scale: 1, rotate: 0 },
+    { scale: 1.1, rotate: 360 }
+  );
+
   const boxBg = useColorModeValue("whiteAlpha.600", "whiteAlpha.200");
   const avatarBorderColor = useColorModeValue(
     "whiteAlpha.900",
@@ -31,14 +57,16 @@ const Page = () => {
     "-dark"
   )}.png`;
 
+  const buttonColorScheme = useColorModeValue("blue", "gray");
+
   return (
     <Container maxW="container.md">
       <Layout>
         <Box
           p={3}
           my={{ base: 6, md: 4 }}
-          borderRadius={8}
-          textAlign="center"
+          borderRadius={10}
+          align="center"
           fontSize={[18, 20, 22]}
           bg={boxBg}
           boxShadow="sm"
@@ -56,18 +84,27 @@ const Page = () => {
 
             <TypeWritter />
           </Box>
-          <Box mt={{ base: 4, md: 0 }} ml={{ md: 6 }} align="center">
-            <Image
-              src={avatarImg}
-              alt="Profile Picture"
-              borderRadius="full"
-              borderWidth={2}
-              borderStyle="solid"
-              borderColor={avatarBorderColor}
-              boxSize="100px"
-              display="inline-block"
-            />
-          </Box>
+
+          <StyledBox
+            mt={{ base: 4, md: 0 }}
+            ml={{ md: 6 }}
+            align="center"
+            animate={animate}
+            onTap={cycle}
+          >
+            <Tooltip label="Click Me" placement="top">
+              <Image
+                src={avatarImg}
+                alt="Profile Picture"
+                borderRadius="full"
+                borderWidth={2}
+                borderStyle="solid"
+                borderColor={avatarBorderColor}
+                boxSize="100px"
+                display="inline-block"
+              />
+            </Tooltip>
+          </StyledBox>
         </Box>
 
         {/* Section */}
@@ -75,6 +112,7 @@ const Page = () => {
           <Heading as="h3" variant="section-title">
             About Me
           </Heading>
+
           <Paragraph>
             I&#39;m a college student and a front-end web developer. Currently,
             I&#39;m studying at University of Information Technology&nbsp;
@@ -85,9 +123,9 @@ const Page = () => {
             <NextLink href="/works">
               <Button
                 rightIcon={<ChevronRightIcon />}
-                colorScheme={useColorModeValue("blue", "gray")}
+                colorScheme={buttonColorScheme}
               >
-                My Works
+                My Porfolio
               </Button>
             </NextLink>
           </Center>
@@ -97,6 +135,7 @@ const Page = () => {
           <Heading as="h3" variant="section-title">
             Education
           </Heading>
+
           <EducationSection>
             <EducationYear>2007</EducationYear>
             Lê Đình Chinh Primary School
@@ -117,9 +156,114 @@ const Page = () => {
 
         <Section delay={0.3}>
           <Heading as="h3" variant="section-title">
-            Hobbies
+            Web
           </Heading>
-          <Paragraph>Anime, Manga, Music, Video Game, Guitar.</Paragraph>
+
+          <List>
+            <ListItem>
+              <Link
+                href="https://github.com/vuquangtuan123"
+                target="_blank"
+                style={{ textDecoration: "none" }}
+              >
+                <Button
+                  leftIcon={<RiGithubFill />}
+                  variant="ghost"
+                  colorScheme={useColorModeValue("blue", "violet")} // color.200
+                >
+                  vuquangtuan123
+                </Button>
+              </Link>
+            </ListItem>
+
+            <ListItem>
+              <Link
+                href="https://twitter.com/tuanvuq123"
+                target="_blank"
+                style={{ textDecoration: "none" }}
+              >
+                <Button
+                  leftIcon={<RiTwitterFill />}
+                  variant="ghost"
+                  colorScheme={useColorModeValue("blue", "violet")} // color.200
+                >
+                  @tuanvuq123
+                </Button>
+              </Link>
+            </ListItem>
+          </List>
+        </Section>
+
+        <Section delay={0.4}>
+          <Heading as="h3" variant="section-title">
+            Hobby
+          </Heading>
+
+          <AnimatePresence exitBeforeEnter initial={false}>
+            <motion.div
+              key={isOpen}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4, type: "easeInOut" }}
+            >
+              {!isOpen ? (
+                <Center>
+                  <Button
+                    onClick={onOpen}
+                    rightIcon={<ChevronRightIcon />}
+                    colorScheme={buttonColorScheme}
+                    w="140px"
+                  >
+                    I Also Like
+                  </Button>
+                </Center>
+              ) : (
+                <SimpleGrid
+                  columns={[1, 2, 3]}
+                  spacingX="25px"
+                  spacingY="15px"
+                  p="1rem"
+                >
+                  <HobbyItem icon={MdMovieFilter} onClick={onClose} delay={0}>
+                    Anime
+                  </HobbyItem>
+                  <HobbyItem icon={AiFillRead} onClick={onClose} delay={0.1}>
+                    Manga
+                  </HobbyItem>
+                  <HobbyItem icon={RiMusic2Fill} onClick={onClose} delay={0.2}>
+                    Music
+                  </HobbyItem>
+                  <HobbyItem icon={GiDonut} onClick={onClose} delay={0.3}>
+                    3D Render
+                  </HobbyItem>
+                  <HobbyItem icon={RiGameFill} onClick={onClose} delay={0.4}>
+                    Video Game
+                  </HobbyItem>
+                  <HobbyItem icon={FaGuitar} onClick={onClose} delay={0.5}>
+                    Playing Guitar
+                  </HobbyItem>
+                </SimpleGrid>
+              )}
+            </motion.div>
+          </AnimatePresence>
+        </Section>
+
+        <Section delay={0.5}>
+          <Heading as="h3" variant="section-title">
+            Contact
+          </Heading>
+
+          <Center my={5}>
+            <NextLink href="/contact">
+              <Button
+                rightIcon={<ChevronRightIcon />}
+                colorScheme={buttonColorScheme}
+              >
+                Get in Touch
+              </Button>
+            </NextLink>
+          </Center>
         </Section>
       </Layout>
     </Container>

@@ -21,4 +21,5 @@
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #9c9ea0;
+  background-clip: padding-box;
 }

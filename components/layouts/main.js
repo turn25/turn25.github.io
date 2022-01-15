@@ -23,7 +23,7 @@ const MainLayout = ({ children, router }) => {
 
       <Navbar path={router.asPath} />
 
-      <Container maxW="container.sm" pt={14} flex={1}>
+      <Container maxW="container.sm" mt={14} flex={1}>
         {children}
       </Container>
 

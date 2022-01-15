@@ -36,7 +36,6 @@ const loaderSize = 120;
 const currLoaderLength = 5;
 
 const CustomLoader = ({
-  activeNavBar,
   currLoader,
   setCurrLoader,
   isSelectLoader,
@@ -152,13 +151,11 @@ const CustomLoader = ({
             onClick={handlePrevBtn}
             aria-label="Previous Loader"
             icon={<ArrowLeftIcon />}
-            _focus={{ boxShadow: activeNavBar }}
           />
           <IconButton
             onClick={handleNextBtn}
             aria-label="Next Loader"
             icon={<ArrowRightIcon />}
-            _focus={{ boxShadow: activeNavBar }}
           />
         </HStack>
         <Slider
@@ -167,7 +164,7 @@ const CustomLoader = ({
           min={1}
           max={4}
           onChange={(val) => setSpeed(val)}
-          width="60%"
+          w="60%"
         >
           <SliderTrack>
             <SliderFilledTrack bg={sliderColor} />

@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import NextLink from "next/link";
+
 import {
   Container,
   Box,
@@ -7,9 +7,7 @@ import {
   VStack,
   Flex,
   Heading,
-  Button,
   IconButton,
-  Link,
   Drawer,
   DrawerBody,
   DrawerFooter,
@@ -26,7 +24,7 @@ import { RiHomeLine, RiStackLine, RiGithubFill } from "react-icons/ri";
 
 import Logo from "./logo";
 import ColorModeToggleButton from "./color-mode-switcher";
-import LinkItem from "./link-item";
+import { LinkItem, DrawerLinkBtn } from "./link-item";
 import CustomLoader from "./custom-loader.js";
 import Footer from "./footer";
 
@@ -42,10 +40,6 @@ const Navbar = ({ path }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
 
-  const activeNavBar = useColorModeValue(
-    "0 0 0 3px rgba(10, 125, 230, 0.6)",
-    "0 0 0 3px rgba(160, 125, 230, 0.6)"
-  );
   const navbarBgColor = useColorModeValue("#ffffff75", "#4a556825");
   const scrollbarThumbBg = useColorModeValue("#00000060", "#ffffff60");
 
@@ -62,7 +56,7 @@ const Navbar = ({ path }) => {
       <Container
         maxW="container.lg"
         display="flex"
-        height="100%"
+        h="100%"
         alignItems="center"
         px={4}
       >
@@ -85,7 +79,6 @@ const Navbar = ({ path }) => {
             path={path}
             px={2}
             style={{ textDecoration: "none" }}
-            _focus={{ boxShadow: activeNavBar }}
           >
             <RiStackLine />
             Works
@@ -96,7 +89,6 @@ const Navbar = ({ path }) => {
             target="_blank"
             px={2}
             style={{ textDecoration: "none" }}
-            _focus={{ boxShadow: activeNavBar }}
           >
             <RiGithubFill />
             My Github
@@ -135,7 +127,6 @@ const Navbar = ({ path }) => {
                       variant="outline"
                       onClick={onOpen}
                       ref={btnRef}
-                      _focus={{ boxShadow: activeNavBar }}
                     />
                   )}
                 </motion.span>
@@ -149,10 +140,7 @@ const Navbar = ({ path }) => {
               >
                 <DrawerOverlay />
                 <DrawerContent>
-                  <DrawerCloseButton
-                    _focus={{ boxShadow: activeNavBar }}
-                    zIndex={10}
-                  />
+                  <DrawerCloseButton zIndex={10} />
                   <DrawerHeader opacity="75%">
                     <ColorModeToggleButton />
                   </DrawerHeader>
@@ -177,39 +165,35 @@ const Navbar = ({ path }) => {
                   >
                     <VStack align="stretch" spacing={28}>
                       <VStack align="stretch" spacing={4} flex={1}>
-                        <NextLink href="/" passHref>
-                          <Button
-                            as={Link}
-                            onClick={onClose}
-                            leftIcon={<RiHomeLine />}
-                            _focus={{ boxShadow: activeNavBar }}
-                          >
-                            About
-                          </Button>
-                        </NextLink>
-                        <NextLink href="/works" passHref>
-                          <Button
-                            as={Link}
-                            onClick={onClose}
-                            leftIcon={<RiStackLine />}
-                            _focus={{ boxShadow: activeNavBar }}
-                          >
-                            Works
-                          </Button>
-                        </NextLink>
+                        <DrawerLinkBtn
+                          href="/"
+                          path={path}
+                          onClick={onClose}
+                          leftIcon={<RiHomeLine />}
+                        >
+                          About Me
+                        </DrawerLinkBtn>
 
-                        <Button
-                          as={Link}
+                        <DrawerLinkBtn
+                          href="/works"
+                          path={path}
+                          onClick={onClose}
+                          leftIcon={<RiStackLine />}
+                        >
+                          My Works
+                        </DrawerLinkBtn>
+
+                        <DrawerLinkBtn
+                          href="https://github.com/vuquangtuan123"
+                          path={path}
                           onClick={onClose}
                           leftIcon={<RiGithubFill />}
-                          href="https://github.com/vuquangtuan123"
-                          _focus={{ boxShadow: activeNavBar }}
+                          target="_blank"
                         >
                           My Github
-                        </Button>
+                        </DrawerLinkBtn>
                       </VStack>
                       <CustomLoader
-                        activeNavBar={activeNavBar}
                         currLoader={currLoader}
                         setCurrLoader={setCurrLoader}
                         isSelectLoader={isSelectLoader}
