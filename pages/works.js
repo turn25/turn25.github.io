@@ -18,7 +18,7 @@ const Works = () => {
 
   return (
     <Layout title="My Works">
-      <Container maxW="container.md">
+      <Container maxW="container.sm">
         <Box
           p={3}
           borderRadius={10}

@@ -18,20 +18,23 @@ const StyledBox = chakra(motion.div);
 const variants = {
   enter: (direction) => {
     return {
-      x: direction > 0 ? 200 : -200,
+      x: direction > 0 ? 240 : -240,
       opacity: 0,
+      scale: 1.25,
     };
   },
   center: {
     zIndex: 1,
     x: 0,
     opacity: 1,
+    scale: 1,
   },
   exit: (direction) => {
     return {
       zIndex: 0,
-      x: direction < 0 ? -200 : -200,
+      x: direction < 0 ? -240 : -240,
       opacity: 0,
+      scale: 1.25,
     };
   },
 };
@@ -41,7 +44,7 @@ const swipePower = (offset, velocity) => {
   return Math.abs(offset) * velocity;
 };
 
-export const ImageSlider = ({ images, title }) => {
+export const ImageSlider = ({ images, title, ...props }) => {
   const [[page, direction], setPage] = useState([0, 0]);
   // zoom in image
   const [isZoom, setIsZoom] = useState(false);
@@ -62,11 +65,11 @@ export const ImageSlider = ({ images, title }) => {
   const toggleZoom = () => {
     setTimeout(() => {
       setIsZoom(true);
-    }, 150);
+    }, 100);
   };
 
   return (
-    <Box>
+    <Box my={10} {...props}>
       {isZoom && (
         <Box
           onClick={() => {
@@ -79,18 +82,17 @@ export const ImageSlider = ({ images, title }) => {
           right="0"
           bg="#000"
           opacity={0.8}
-          zIndex="0"
+          zIndex="1"
         />
       )}
       <AnimatePresence initial={false} custom={direction}>
         <StyledBox
-          h="100%"
           display="flex"
           position="relative"
           justifyContent="center"
           alignItems="center"
           zIndex={1}
-          animate={{ scale: isZoom ? 1.9 : 1 }}
+          animate={{ scale: isZoom ? 1.5 : 1, bottom: isZoom ? "30vh" : 0 }}
         >
           {/* position absolute = 0 height */}
           <Image
@@ -108,12 +110,13 @@ export const ImageSlider = ({ images, title }) => {
             animate="center"
             exit="exit"
             transition={{
-              x: { type: "spring", stiffness: 300, damping: 30 },
+              x: { type: "spring", stiffness: 240, damping: 30 },
+              scale: { type: "spring", stiffness: 15, damping: 5 },
               opacity: { duration: 0.2 },
             }}
             drag={images.length > 1 && "x"} // only drag when array have more than 1 item
             dragConstraints={{ left: 0, right: 0 }}
-            dragElastic={1}
+            dragElastic={0.4}
             onDragEnd={(e, { offset, velocity }) => {
               const swipe = swipePower(offset.x, velocity.x);
 
@@ -123,7 +126,7 @@ export const ImageSlider = ({ images, title }) => {
                 paginate(-1);
               }
             }}
-            whileTap={{ scale: 1.15 }}
+            // whileTap={{ scale: 1.15 }}
             onDoubleClick={() => {
               !isZoom && toggleZoom();
             }}

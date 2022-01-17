@@ -4,13 +4,18 @@ import {
   List,
   ListItem,
   Link,
+  Icon,
   IconButton,
   useColorModeValue,
 } from "@chakra-ui/react";
 import { AiFillEye } from "react-icons/ai";
 
 import Layout from "../../components/layouts/layout";
-import { WorkBreadCrumb, MetaTag } from "../../components/works-item";
+import {
+  WorkBreadCrumb,
+  MetaTag,
+  WorkImage,
+} from "../../components/works-item";
 import Paragraph from "../../components/paragraph";
 import { ImageSlider } from "../../components/image-slider";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
@@ -22,6 +27,7 @@ import WorksPageData from "../../data/works-page";
 const Post = ({ post }) => {
   const bg = useColorModeValue("blackAlpha.600", "whiteAlpha.800");
   const color = useColorModeValue("#4fb6ff", "#ff7acc");
+  const boxBg = useColorModeValue("whiteAlpha.600", "whiteAlpha.200");
 
   const {
     id: path,
@@ -36,47 +42,43 @@ const Post = ({ post }) => {
 
   return (
     <Layout title={post.title}>
-      <Container as="article" maxW="container.md">
-        <WorkBreadCrumb
-          path={path}
-          title={title}
-          year={year}
+      <Container as="article" maxW="container.sm">
+        <Box
+          py={3}
+          px={6}
           my={{ base: 6, md: 4 }}
-        />
+          borderRadius={10}
+          fontSize={[18, 20, 22]}
+          bg={boxBg}
+          boxShadow="sm"
+          backdropFilter="blur(5px)"
+        >
+          <WorkBreadCrumb path={path} title={title} year={year} />
+        </Box>
+
         <Paragraph>{description}</Paragraph>
 
         <List my={4} spacing={2}>
           {liveDemo && (
-            <ListItem display="flex" alignItems="center">
+            <ListItem>
               <MetaTag>Live Demo</MetaTag>
-              <Link
-                href={liveDemo}
-                target="_blank"
-                display="flex"
-                alignItems="center"
-              >
+              <Link href={liveDemo} target="_blank">
                 {liveDemo}
-                <IoRocket mx="2px" />
+                <Icon as={IoRocket} mx="2px" />
               </Link>
             </ListItem>
           )}
 
           {source && (
-            <ListItem display="flex" alignItems="center">
+            <ListItem>
               <MetaTag>Source</MetaTag>
-              <Link
-                href={source}
-                target="_blank"
-                display="flex"
-                alignItems="center"
-              >
-                {source}
-                <ExternalLinkIcon mx="2px" />
+              <Link href={source} target="_blank">
+                {source} <ExternalLinkIcon mx="2px" />
               </Link>
             </ListItem>
           )}
           {builtWith && (
-            <ListItem display="flex" alignItems="center">
+            <ListItem>
               <MetaTag>Build With</MetaTag>
               {/* check if don't have destination => don't display as link */}
               {builtWith.map(({ name, destination }, id) => {
@@ -96,11 +98,28 @@ const Post = ({ post }) => {
         </List>
 
         {/* display all existed images */}
-        {images && <ImageSlider images={images} title={title} />}
+        {images && (
+          <ImageSlider
+            images={images}
+            title={title}
+            display={{ base: "none", xl: "block" }}
+          />
+        )}
 
-        <Box mt={10} display="flex" alignItems="center">
+        {/* mobile view */}
+        {images &&
+          images.map((image, idx) => (
+            <WorkImage
+              key={idx}
+              src={image}
+              alt={`${title} + Image + ${idx + 1}`}
+              display={{ base: "block", xl: "none" }}
+            />
+          ))}
+
+        <Box display={{ base: "none", xl: "block" }}>
           <MetaTag>Note</MetaTag>
-          <Paragraph alignItems="center">
+          <Paragraph alignItems="center" fontWeight="semibold">
             Double click on the image or Click on the
             <IconButton
               aria-label="Indicator"

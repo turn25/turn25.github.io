@@ -1,11 +1,18 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
+import dynamic from "next/dynamic";
 import { Box, Container } from "@chakra-ui/react";
 import { AnimatePresence, motion } from "framer-motion";
 
 import Navbar from "../navbar";
 import Footer from "../footer";
 import CustomParticles from "../custom-particles";
+import DonutLoader from "../donut-loader";
+
+const LazyDonutLoading = dynamic(() => import("../donut-model"), {
+  ssr: false,
+  loading: () => <DonutLoader />,
+});
 
 const MainLayout = ({ children, router }) => {
   const [isShow, setIsShow] = useState(false);
@@ -17,7 +24,7 @@ const MainLayout = ({ children, router }) => {
   }, [path]);
 
   return (
-    <Box as="main" h="100vh" display="flex" flexDir="column" overflowX="hidden">
+    <Box as="main" h="100vh" display="flex" flexDir="column">
       <Head>
         {/* meta tags */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -47,8 +54,16 @@ const MainLayout = ({ children, router }) => {
 
       <Navbar path={path} />
 
-      <Container maxW="container.sm" mt={14} flex={1}>
-        {children}
+      <Container
+        maxW="container.md"
+        w="auto"
+        mt={10}
+        flex={1}
+        display="flex"
+        flexDir="column"
+      >
+        <LazyDonutLoading />
+        <Box zIndex={1}>{children}</Box>
       </Container>
 
       <Footer />

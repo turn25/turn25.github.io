@@ -12,7 +12,6 @@ export const ImageIndicators = ({ images, title }) => {
       style={{
         height: "100%",
         borderRadius: 20,
-        overflow: "hidden",
         cursor: "grab",
       }}
       whileTap={{ cursor: "grabbing" }}

@@ -60,7 +60,7 @@ const Page = () => {
   const buttonColorScheme = useColorModeValue("blue", "gray");
 
   return (
-    <Container maxW="container.md">
+    <Container maxW="container.sm">
       <Layout>
         <Box
           p={3}

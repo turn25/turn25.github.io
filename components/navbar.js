@@ -47,7 +47,10 @@ const Navbar = ({ path }) => {
     <Box
       as="nav"
       position="fixed"
-      w="100vw"
+      w="full"
+      top="0"
+      left="0"
+      right="0"
       h="64px"
       bg={navbarBgColor}
       backdropFilter="blur(5px)" //Firefox not supported

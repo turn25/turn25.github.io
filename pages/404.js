@@ -15,7 +15,7 @@ import Layout from "../components/layouts/layout";
 const NotFound = () => {
   return (
     <Layout title="Page not found">
-      <Container maxW="container.md" align="center" my={{ base: 6, md: 4 }}>
+      <Container maxW="container.sm" align="center" my={{ base: 6, md: 4 }}>
         <VStack spacing={{ base: 10, md: 12 }}>
           <Heading as="h1" fontSize={{ base: "2.8rem", md: "3rem" }}>
             404 Not Found
