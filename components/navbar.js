@@ -50,7 +50,7 @@ const Navbar = ({ path }) => {
       w="100vw"
       h="64px"
       bg={navbarBgColor}
-      backdropFilter="blur(5px)"
+      backdropFilter="blur(5px)" //Firefox not supported
       zIndex={10}
     >
       <Container

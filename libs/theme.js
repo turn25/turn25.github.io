@@ -37,6 +37,30 @@ const components = {
         )(props),
       },
     }),
+
+    // override existing variants
+    variants: {
+      ghost: (props) => ({
+        color: mode("#3d7aed", "#ff7acc")(props),
+      }),
+
+      navBtn: (props) => ({
+        color: "#f7fafc",
+        bg: mode("blue.400", "gray.400")(props),
+        borderRadius: "100px",
+        opacity: "75%",
+
+        _focus: {
+          boxShadow: "",
+        },
+        _hover: {
+          bg: mode("blue.600", "gray.600")(props),
+        },
+        _active: {
+          bg: mode("blue.800", "gray.800")(props),
+        },
+      }),
+    },
   },
 
   Link: {
@@ -49,6 +73,12 @@ const components = {
           "0 0 0 3px rgba(160, 125, 230, 0.6)"
         )(props),
       },
+    }),
+  },
+
+  BreadcrumbLink: {
+    baseStyle: (props) => ({
+      color: mode("#3d7aed", "#ff7acc")(props),
     }),
   },
 

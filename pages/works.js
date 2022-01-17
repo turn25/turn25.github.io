@@ -8,10 +8,10 @@ import {
 
 import Layout from "../components/layouts/layout";
 import Section from "../components/section";
-import GridItem from "../components/grid-item";
+import GridItem from "../components/work-grid-item";
 
 // Data
-import { WorksPageData } from "../data/works-page";
+import WorksPageData from "../data/works-page";
 
 const Works = () => {
   const boxBg = useColorModeValue("whiteAlpha.600", "whiteAlpha.200");
@@ -27,6 +27,7 @@ const Works = () => {
           bg={boxBg}
           fontSize={[18, 20, 22]}
           boxShadow="sm"
+          backdropFilter="blur(5px)"
         >
           Projects that i have built
         </Box>

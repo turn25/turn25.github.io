@@ -70,10 +70,10 @@ const Page = () => {
           fontSize={[18, 20, 22]}
           bg={boxBg}
           boxShadow="sm"
+          backdropFilter="blur(5px)"
         >
           Hello, I&#39;m Tuan 👋
         </Box>
-
         {/* Name */}
         <Box
           display={{ md: "flex" }}
@@ -106,7 +106,6 @@ const Page = () => {
             </Tooltip>
           </StyledBox>
         </Box>
-
         {/* Section */}
         <Section delay={0.1}>
           <Heading as="h3" variant="section-title">
@@ -130,7 +129,6 @@ const Page = () => {
             </NextLink>
           </Center>
         </Section>
-
         <Section delay={0.2}>
           <Heading as="h3" variant="section-title">
             Education
@@ -153,7 +151,6 @@ const Page = () => {
             Started studying at UIT.
           </EducationSection>
         </Section>
-
         <Section delay={0.3}>
           <Heading as="h3" variant="section-title">
             Web
@@ -169,7 +166,7 @@ const Page = () => {
                 <Button
                   leftIcon={<RiGithubFill />}
                   variant="ghost"
-                  colorScheme={useColorModeValue("blue", "violet")} // color.200
+                  colorScheme={useColorModeValue("blue", "gray")} // color.200
                 >
                   vuquangtuan123
                 </Button>
@@ -185,7 +182,7 @@ const Page = () => {
                 <Button
                   leftIcon={<RiTwitterFill />}
                   variant="ghost"
-                  colorScheme={useColorModeValue("blue", "violet")} // color.200
+                  colorScheme={useColorModeValue("blue", "gray")} // color.200
                 >
                   @tuanvuq123
                 </Button>
@@ -193,7 +190,6 @@ const Page = () => {
             </ListItem>
           </List>
         </Section>
-
         <Section delay={0.4}>
           <Heading as="h3" variant="section-title">
             Hobby
@@ -248,7 +244,6 @@ const Page = () => {
             </motion.div>
           </AnimatePresence>
         </Section>
-
         <Section delay={0.5}>
           <Heading as="h3" variant="section-title">
             Contact
