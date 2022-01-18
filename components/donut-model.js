@@ -1,22 +1,16 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"; //Orbit controls allow the camera to orbit around a target.
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"; // Orbit controls allow the camera to orbit around a target.
 import { loadGLTFModel } from "../libs/load-model";
 import { DonutContainer, DonutSpinner } from "./donut-loader";
 
 const Donut = () => {
   const containerRef = useRef();
-  const [loading, setLoading] = useState(true); //loading on init
+  const [loading, setLoading] = useState(true); // loading on init
   const [renderer, setRenderer] = useState();
   const [_camera, setCamera] = useState();
-  const [target] = useState(new THREE.Vector3(-0.5, 1.2, 0)); //x, y ,z
-  const [initialCameraPosition] = useState(
-    new THREE.Vector3(
-      20 * Math.sin(0.2 * Math.PI),
-      10,
-      20 * Math.cos(0.2 * Math.PI)
-    )
-  );
+  const [target] = useState(new THREE.Vector3(-0.5, 1.2, 0)); // x, y ,z
+  const [initialCameraPosition] = useState(new THREE.Vector3(16, 14, 18)); // camera position x, y, z
   const [scene] = useState(new THREE.Scene());
   const [_controls, setControls] = useState();
 
@@ -50,7 +44,7 @@ const Donut = () => {
 
       // 640 -> 280, 8->6
       // Scale
-      const scale = scH * 0.025 + 5;
+      const scale = scH * 0.035;
       const camera = new THREE.OrthographicCamera(
         -scale,
         scale,
