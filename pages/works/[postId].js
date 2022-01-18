@@ -5,10 +5,10 @@ import {
   ListItem,
   Link,
   Icon,
-  IconButton,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { AiFillEye } from "react-icons/ai";
+import { ExternalLinkIcon, Search2Icon } from "@chakra-ui/icons";
+import { IoRocket } from "react-icons/io5";
 
 import Layout from "../../components/layouts/layout";
 import {
@@ -18,16 +18,14 @@ import {
 } from "../../components/works-item";
 import Paragraph from "../../components/paragraph";
 import { ImageSlider } from "../../components/image-slider";
-import { ExternalLinkIcon } from "@chakra-ui/icons";
-import { IoRocket } from "react-icons/io5";
+import Section from "../../components/section";
 
 // Data
 import WorksPageData from "../../data/works-page";
 
 const Post = ({ post }) => {
-  const bg = useColorModeValue("blackAlpha.600", "whiteAlpha.800");
-  const color = useColorModeValue("#4fb6ff", "#ff7acc");
   const boxBg = useColorModeValue("whiteAlpha.600", "whiteAlpha.200");
+  const iconColor = useColorModeValue("#3d7aed", "#ff7acc");
 
   const {
     id: path,
@@ -59,83 +57,76 @@ const Post = ({ post }) => {
         <Paragraph>{description}</Paragraph>
 
         <List my={4} spacing={2}>
-          {liveDemo && (
-            <ListItem>
-              <MetaTag>Live Demo</MetaTag>
-              <Link href={liveDemo} target="_blank">
-                {liveDemo}
-                <Icon as={IoRocket} mx="2px" />
-              </Link>
-            </ListItem>
-          )}
+          <Section delay={0.1} mb={0}>
+            {liveDemo && (
+              <ListItem>
+                <MetaTag>Live Demo</MetaTag>
+                <Link href={liveDemo} target="_blank">
+                  {liveDemo}
+                  <Icon as={IoRocket} mx="2px" />
+                </Link>
+              </ListItem>
+            )}
+          </Section>
 
-          {source && (
-            <ListItem>
-              <MetaTag>Source</MetaTag>
-              <Link href={source} target="_blank">
-                {source} <ExternalLinkIcon mx="2px" />
-              </Link>
-            </ListItem>
-          )}
-          {builtWith && (
-            <ListItem>
-              <MetaTag>Build With</MetaTag>
-              {/* check if don't have destination => don't display as link */}
-              {builtWith.map(({ name, destination }, id) => {
-                if (destination)
-                  return (
-                    <span key={id}>
-                      <Link href={destination} target="_blank">
-                        {name}
-                      </Link>
-                      ,&nbsp;
-                    </span>
-                  );
-                else return <span key={id}>{name},&nbsp;</span>;
-              })}
-            </ListItem>
-          )}
+          <Section delay={0.2} mb={0}>
+            {source && (
+              <ListItem>
+                <MetaTag>Source</MetaTag>
+                <Link href={source} target="_blank">
+                  {source} <ExternalLinkIcon mx="2px" mt="-4px" />
+                </Link>
+              </ListItem>
+            )}
+          </Section>
+
+          <Section delay={0.3} mb={0}>
+            {builtWith && (
+              <ListItem>
+                <MetaTag>Build With</MetaTag>
+                {/* check if don't have destination => don't display as link */}
+                {builtWith.map(({ name, destination }, idx) => {
+                  const isLastItem = builtWith.length - 1 - idx === 0; // the last item in array will return true
+                  if (destination)
+                    return (
+                      <span key={idx}>
+                        <Link href={destination} target="_blank">
+                          {name}{" "}
+                        </Link>
+                        {!isLastItem && ", "}
+                        {isLastItem && (
+                          <Search2Icon mx="2px" mt="-4px" color={iconColor} />
+                        )}
+                      </span>
+                    );
+                  else return <span key={idx}>{name},&nbsp;</span>;
+                })}
+              </ListItem>
+            )}
+          </Section>
         </List>
 
-        {/* display all existed images */}
-        {images && (
-          <ImageSlider
-            images={images}
-            title={title}
-            display={{ base: "none", xl: "block" }}
-          />
-        )}
-
-        {/* mobile view */}
-        {images &&
-          images.map((image, idx) => (
-            <WorkImage
-              key={idx}
-              src={image}
-              alt={`${title} + Image + ${idx + 1}`}
-              display={{ base: "block", xl: "none" }}
+        <Section delay={0.4} mb={0}>
+          {/* display all existed images */}
+          {images && (
+            <ImageSlider
+              images={images}
+              title={title}
+              display={{ base: "none", xl: "block" }}
             />
-          ))}
+          )}
 
-        <Box display={{ base: "none", xl: "block" }}>
-          <MetaTag>Note</MetaTag>
-          <Paragraph alignItems="center" fontWeight="semibold">
-            Double click on the image or Click on the
-            <IconButton
-              aria-label="Indicator"
-              icon={<AiFillEye style={{ fontSize: "16px" }} />}
-              isRound
-              color={color}
-              bg={bg}
-              size="xs"
-              mx={2}
-              _hover={{ bg: bg }}
-              _active={{ bg: bg }}
-              _focus={{ boxShadow: "" }}
-            />
-            to zoom in
-          </Paragraph>
-        </Box>
+          {/* mobile view */}
+          {images &&
+            images.map((image, idx) => (
+              <WorkImage
+                key={idx}
+                src={image}
+                alt={`${title} Image ${idx + 1}`}
+                display={{ base: "block", xl: "none" }}
+              />
+            ))}
+        </Section>
       </Container>
     </Layout>
   );
