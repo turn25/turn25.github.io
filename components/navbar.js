@@ -1,5 +1,4 @@
 import { useState, useRef } from "react";
-
 import {
   Container,
   Box,
@@ -18,48 +17,46 @@ import {
   useColorModeValue,
   useDisclosure,
 } from "@chakra-ui/react";
-import { motion, AnimatePresence } from "framer-motion";
-import { HamburgerIcon } from "@chakra-ui/icons";
 import { RiHomeLine, RiStackLine, RiGithubFill } from "react-icons/ri";
 
 import Logo from "./logo";
 import ColorModeToggleButton from "./color-mode-switcher";
+import DrawerToggleButton from "./drawer-toggle-btn";
 import { LinkItem, DrawerLinkBtn } from "./link-item";
 import CustomLoader from "./custom-loader.js";
 import Footer from "./footer";
-
-const variants = {
-  hidden: { opacity: 0 },
-  enter: { opacity: 1 },
-  exit: { opacity: 0 },
-};
+import Section from "./section";
 
 const Navbar = ({ path }) => {
   const [currLoader, setCurrLoader] = useState(0);
   const [isSelectLoader, setIsSelectLoader] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
+
   const btnRef = useRef();
 
   const navbarBgColor = useColorModeValue("#ffffff75", "#4a556825");
   const scrollbarThumbBg = useColorModeValue("#00000060", "#ffffff60");
 
+  const handleCloseDrawer = () => {
+    setTimeout(() => {
+      onClose();
+    }, 150); // set delay time
+  };
+
   return (
     <Box
       as="nav"
       position="fixed"
-      w="full"
       top="0"
-      left="0"
-      right="0"
-      h="64px"
+      w="100vw" // overflow is set to "hidden" when open drawer
       bg={navbarBgColor}
-      backdropFilter="blur(5px)" //Firefox not supported
+      backdropFilter="blur(5px)" // Firefox not supported
       zIndex={10}
     >
       <Container
         maxW="container.lg"
         display="flex"
-        h="100%"
+        minH="64px"
         alignItems="center"
         px={4}
       >
@@ -100,122 +97,105 @@ const Navbar = ({ path }) => {
 
         <Box flex={1} align="right">
           {/* Color Mode Toggle Button */}
-          <AnimatePresence exitBeforeEnter initial={false}>
-            <motion.span
-              key={isOpen}
-              initial="hidden"
-              animate="enter"
-              exit="exit"
-              variants={variants}
-              transition={{ duration: 0.5, type: "easeInOut" }}
-            >
-              {!isOpen && <ColorModeToggleButton />}
-            </motion.span>
-          </AnimatePresence>
-          <Box ml={2} display="inline-flex">
-            <Box>
-              <AnimatePresence exitBeforeEnter initial={false}>
-                <motion.span
-                  key={isOpen}
-                  initial="hidden"
-                  animate="enter"
-                  exit="exit"
-                  variants={variants}
-                  transition={{ duration: 0.5, delay: 0.05, type: "easeInOut" }}
-                >
-                  {!isOpen && (
-                    <IconButton
-                      aria-label="Drawer Options"
-                      icon={<HamburgerIcon />}
-                      variant="outline"
-                      onClick={onOpen}
-                      ref={btnRef}
-                    />
-                  )}
-                </motion.span>
-              </AnimatePresence>
+          <ColorModeToggleButton disabled={isOpen} />
 
-              <Drawer
-                isOpen={isOpen}
-                placement="right"
-                onClose={onClose}
-                finalFocusRef={btnRef}
+          <IconButton
+            aria-label="Drawer Options"
+            icon={<DrawerToggleButton isOpen={isOpen} />}
+            onClick={onOpen}
+            variant="outline"
+            ref={btnRef}
+            ml={2}
+            disabled={isOpen}
+          />
+
+          <Drawer
+            isOpen={isOpen}
+            placement="right"
+            onClose={onClose}
+            finalFocusRef={btnRef}
+          >
+            <DrawerOverlay />
+            <DrawerContent>
+              <DrawerCloseButton zIndex={10} />
+
+              <DrawerHeader opacity="75%">
+                <ColorModeToggleButton />
+              </DrawerHeader>
+
+              <DrawerBody
+                mt={10}
+                //override custom scrollbar
+                overflow="overlay" //overlay scrollbar, not consume space
+                css={{
+                  "&::-webkit-scrollbar": {
+                    width: "9px",
+                  },
+                  "&::-webkit-scrollbar-thumb": {
+                    background: scrollbarThumbBg,
+                    border: "3px solid transparent",
+                    backgroundClip: "padding-box",
+                  },
+                  "&::-webkit-scrollbar-track": {
+                    background: "transparent",
+                  },
+                }}
               >
-                <DrawerOverlay />
-                <DrawerContent>
-                  <DrawerCloseButton zIndex={10} />
-                  <DrawerHeader opacity="75%">
-                    <ColorModeToggleButton />
-                  </DrawerHeader>
+                <VStack align="stretch" spacing={28}>
+                  <Section initY={30} delay={0.1}>
+                    <VStack align="stretch" spacing={4} flex={1}>
+                      <DrawerLinkBtn
+                        href="/"
+                        path={path}
+                        onClick={handleCloseDrawer}
+                        leftIcon={<RiHomeLine />}
+                        delay="0.1"
+                      >
+                        About Me
+                      </DrawerLinkBtn>
 
-                  <DrawerBody
-                    mt={10}
-                    //override custom scrollbar
-                    overflow="overlay" //overlay scrollbar, not consume space
-                    css={{
-                      "&::-webkit-scrollbar": {
-                        width: "9px",
-                      },
-                      "&::-webkit-scrollbar-thumb": {
-                        background: scrollbarThumbBg,
-                        border: "3px solid transparent",
-                        backgroundClip: "padding-box",
-                      },
-                      "&::-webkit-scrollbar-track": {
-                        background: "transparent",
-                      },
-                    }}
-                  >
-                    <VStack align="stretch" spacing={28}>
-                      <VStack align="stretch" spacing={4} flex={1}>
-                        <DrawerLinkBtn
-                          href="/"
-                          path={path}
-                          onClick={onClose}
-                          leftIcon={<RiHomeLine />}
-                        >
-                          About Me
-                        </DrawerLinkBtn>
+                      <DrawerLinkBtn
+                        href="/works"
+                        path={path}
+                        onClick={handleCloseDrawer}
+                        leftIcon={<RiStackLine />}
+                        delay="0.2"
+                      >
+                        My Works
+                      </DrawerLinkBtn>
 
-                        <DrawerLinkBtn
-                          href="/works"
-                          path={path}
-                          onClick={onClose}
-                          leftIcon={<RiStackLine />}
-                        >
-                          My Works
-                        </DrawerLinkBtn>
-
-                        <DrawerLinkBtn
-                          href="https://github.com/vuquangtuan123"
-                          path={path}
-                          onClick={onClose}
-                          leftIcon={<RiGithubFill />}
-                          target="_blank"
-                        >
-                          My Github
-                        </DrawerLinkBtn>
-                      </VStack>
-                      <CustomLoader
-                        currLoader={currLoader}
-                        setCurrLoader={setCurrLoader}
-                        isSelectLoader={isSelectLoader}
-                        setIsSelectLoader={setIsSelectLoader}
-                      />
+                      <DrawerLinkBtn
+                        href="https://github.com/vuquangtuan123"
+                        path={path}
+                        onClick={handleCloseDrawer}
+                        leftIcon={<RiGithubFill />}
+                        target="_blank"
+                        delay="0.3"
+                      >
+                        My Github
+                      </DrawerLinkBtn>
                     </VStack>
-                  </DrawerBody>
+                  </Section>
 
-                  <DrawerFooter
-                    display="flex"
-                    justifyContent="center"
-                    alignItems="center"
-                  >
-                    <Footer />
-                  </DrawerFooter>
-                </DrawerContent>
-              </Drawer>
-            </Box>
-          </Box>
+                  <CustomLoader
+                    currLoader={currLoader}
+                    setCurrLoader={setCurrLoader}
+                    isSelectLoader={isSelectLoader}
+                    setIsSelectLoader={setIsSelectLoader}
+                    initY={30}
+                  />
+                </VStack>
+              </DrawerBody>
+
+              <DrawerFooter
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+              >
+                <Footer />
+              </DrawerFooter>
+            </DrawerContent>
+          </Drawer>
         </Box>
       </Container>
     </Box>

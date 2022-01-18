@@ -1,5 +1,6 @@
 import NextLink from "next/link";
 import { Button, Link, useColorModeValue } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import styled from "@emotion/styled";
 
 const Wrapper = styled.span`
@@ -78,11 +79,10 @@ export const DrawerLinkBtn = ({
   onClick,
   leftIcon,
   target,
+  delay = 0,
   ...props
 }) => {
   const isActive = path === href; //current path = href
-  // text, icon color
-  const activeColor = useColorModeValue("#f7fafc", "#202020");
   // bg color
   const activeBgColor = useColorModeValue("blue.400", "violet.400");
   const hoverActiveBgColor = useColorModeValue("blue.500", "violet.500");
@@ -90,24 +90,45 @@ export const DrawerLinkBtn = ({
 
   return (
     <NextLink href={href} passHref>
-      <Button
-        color={isActive ? activeColor : undefined}
-        bg={isActive ? activeBgColor : undefined}
-        fontWeight={isActive ? "bold" : "normal"}
-        as={Link}
-        onClick={onClick}
-        leftIcon={leftIcon}
-        target={target}
-        _hover={{
-          background: isActive ? hoverActiveBgColor : hoverInactiveBgColor,
+      <motion.li
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.5 }}
+        transition={{
+          scale: { type: "spring", stiffness: 100 },
         }}
-        _active={{
-          background: isActive ? hoverActiveBgColor : hoverInactiveBgColor,
-        }}
-        {...props}
+        style={{ display: "flex" }}
       >
-        {children}
-      </Button>
+        <Button
+          flex={1}
+          color={isActive ? "#f7fafc" : undefined}
+          bg={isActive ? activeBgColor : undefined}
+          fontWeight={isActive ? "bold" : "normal"}
+          as={Link}
+          onClick={onClick}
+          leftIcon={leftIcon}
+          target={target}
+          _hover={{
+            background: isActive ? hoverActiveBgColor : hoverInactiveBgColor,
+          }}
+          _active={{
+            background: isActive ? hoverActiveBgColor : hoverInactiveBgColor,
+          }}
+          style={{ textDecoration: "none" }}
+          {...props}
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{
+              duration: 0.8,
+              delay,
+            }}
+          >
+            {children}
+          </motion.div>
+        </Button>
+      </motion.li>
     </NextLink>
   );
 };

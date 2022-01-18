@@ -8,7 +8,7 @@ const variants = {
   exit: { opacity: 0, x: -20 },
 };
 
-const ColorModeToggleButton = () => {
+const ColorModeToggleButton = ({ disabled }) => {
   const { colorMode, toggleColorMode } = useColorMode();
 
   const icon = useColorModeValue(<MoonIcon />, <SunIcon />);
@@ -30,6 +30,7 @@ const ColorModeToggleButton = () => {
           colorScheme={colorSchemeValue}
           icon={icon}
           onClick={toggleColorMode}
+          disabled={disabled}
         />
       </motion.div>
     </AnimatePresence>

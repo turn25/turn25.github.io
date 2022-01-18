@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Head from "next/head";
 import dynamic from "next/dynamic";
 import { Box, Container } from "@chakra-ui/react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 import Navbar from "../navbar";
 import Footer from "../footer";
@@ -39,18 +39,16 @@ const MainLayout = ({ children, router }) => {
         <title>Tuan Vu - Homepage</title>
       </Head>
 
-      <AnimatePresence>
-        {isShow && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.4, type: "easeInOut", delay: 1 }} // set delay time to avoid weird particles scale + position on init (404 page)
-            style={{ zIndex: "-1" }} // override tsParicles.js z-index (0 !important)
-          >
-            <CustomParticles />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {isShow && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4, type: "easeInOut", delay: 1 }} // set delay time to avoid weird particles scale + position on init (404 page)
+          style={{ zIndex: "-1" }} // override tsParicles.js z-index (0 !important)
+        >
+          <CustomParticles />
+        </motion.div>
+      )}
 
       <Navbar path={path} />
 

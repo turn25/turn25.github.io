@@ -7,6 +7,7 @@ import {
   HashLoader,
   DotLoader,
 } from "react-spinners";
+import { motion } from "framer-motion";
 import { css } from "@emotion/react";
 import {
   Box,
@@ -21,6 +22,8 @@ import {
 } from "@chakra-ui/react";
 import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
 import { FaSun, FaMoon } from "react-icons/fa";
+
+import Section from "./section";
 
 const override = css`
   display: block;
@@ -40,6 +43,7 @@ const CustomLoader = ({
   setCurrLoader,
   isSelectLoader,
   setIsSelectLoader,
+  initY,
   ...props
 }) => {
   const [speed, setSpeed] = useState(1);
@@ -79,100 +83,117 @@ const CustomLoader = ({
   return (
     <Box {...props}>
       <VStack spacing={10}>
-        {(() => {
-          switch (currLoader) {
-            case 0:
-              return (
-                <RingLoader
-                  color={color}
-                  css={override}
-                  speedMultiplier={speed}
-                  size={loaderSize}
-                />
-              );
-
-            case 1:
-              return (
-                <PuffLoader
-                  color={color}
-                  css={override}
-                  speedMultiplier={speed}
-                  size={loaderSize}
-                />
-              );
-
-            case 2:
-              return (
-                <CircleLoader
-                  color={color}
-                  css={override}
-                  speedMultiplier={speed}
-                  size={loaderSize}
-                />
-              );
-
-            case 3:
-              return (
-                <ClockLoader
-                  color={color}
-                  css={override}
-                  speedMultiplier={speed}
-                  size={loaderSize}
-                />
-              );
-
-            case 4:
-              return (
-                <HashLoader
-                  color={color}
-                  css={override}
-                  speedMultiplier={speed}
-                  size={loaderSize}
-                />
-              );
-
-            case 5:
-              return (
-                <DotLoader
-                  color={color}
-                  css={override}
-                  speedMultiplier={speed}
-                  size={loaderSize}
-                />
-              );
-
-            default:
-              return <></>;
-          }
-        })()}
-
-        <HStack alignItems="center" justifyContent="center" spacing={4}>
-          <IconButton
-            onClick={handlePrevBtn}
-            aria-label="Previous Loader"
-            icon={<ArrowLeftIcon />}
-          />
-          <IconButton
-            onClick={handleNextBtn}
-            aria-label="Next Loader"
-            icon={<ArrowRightIcon />}
-          />
-        </HStack>
-        <Slider
-          aria-label="Speed Multiplier Slider"
-          defaultValue={speed}
-          min={1}
-          max={4}
-          onChange={(val) => setSpeed(val)}
-          w="60%"
+        <Section
+          initY={initY}
+          mb={0}
+          whileHover={{ scale: 1.15 }}
+          whileTap={{ scale: 1.5 }}
+          transition={{
+            duration: 0.8,
+            delay: 0.4,
+            scale: { type: "spring", stiffness: 50, delay: 0 },
+          }}
         >
-          <SliderTrack>
-            <SliderFilledTrack bg={sliderColor} />
-          </SliderTrack>
-          <SliderThumb boxSize={5}>
-            <Box color={sliderColor} as={sliderIcon} />
-          </SliderThumb>
-        </Slider>
+          {(() => {
+            switch (currLoader) {
+              case 0:
+                return (
+                  <RingLoader
+                    color={color}
+                    css={override}
+                    speedMultiplier={speed}
+                    size={loaderSize}
+                  />
+                );
+
+              case 1:
+                return (
+                  <PuffLoader
+                    color={color}
+                    css={override}
+                    speedMultiplier={speed}
+                    size={loaderSize}
+                  />
+                );
+
+              case 2:
+                return (
+                  <CircleLoader
+                    color={color}
+                    css={override}
+                    speedMultiplier={speed}
+                    size={loaderSize}
+                  />
+                );
+
+              case 3:
+                return (
+                  <ClockLoader
+                    color={color}
+                    css={override}
+                    speedMultiplier={speed}
+                    size={loaderSize}
+                  />
+                );
+
+              case 4:
+                return (
+                  <HashLoader
+                    color={color}
+                    css={override}
+                    speedMultiplier={speed}
+                    size={loaderSize}
+                  />
+                );
+
+              case 5:
+                return (
+                  <DotLoader
+                    color={color}
+                    css={override}
+                    speedMultiplier={speed}
+                    size={loaderSize}
+                  />
+                );
+
+              default:
+                return <></>;
+            }
+          })()}
+        </Section>
+
+        <Section initY={initY} mb={0} delay={0.5}>
+          <HStack alignItems="center" justifyContent="center" spacing={4}>
+            <IconButton
+              onClick={handlePrevBtn}
+              aria-label="Previous Loader"
+              icon={<ArrowLeftIcon />}
+            />
+            <IconButton
+              onClick={handleNextBtn}
+              aria-label="Next Loader"
+              icon={<ArrowRightIcon />}
+            />
+          </HStack>
+        </Section>
+
+        <Section initY={initY} mb={0} w="60%" delay={0.6}>
+          <Slider
+            aria-label="Speed Multiplier Slider"
+            defaultValue={speed}
+            min={1}
+            max={4}
+            onChange={(val) => setSpeed(val)}
+            flex={1}
+          >
+            <SliderTrack>
+              <SliderFilledTrack bg={sliderColor} />
+            </SliderTrack>
+            <SliderThumb boxSize={5}>
+              <Box color={sliderColor} as={sliderIcon} />
+            </SliderThumb>
+          </Slider>
+        </Section>
       </VStack>
     </Box>
   );
