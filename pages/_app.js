@@ -9,12 +9,13 @@ import MainLayout from "../components/layouts/main";
 import theme from "../libs/theme";
 import { AnimatePresence } from "framer-motion";
 
-// Scrollbar CSS
-import "../styles/custom-scrollbar.css";
+// Scrollbar
+import CustomScrollbar from "../components/custom-scrollbar";
 
 function Website({ Component, pageProps, router }) {
   return (
     <ChakraProvider theme={theme}>
+      <CustomScrollbar />
       <MainLayout router={router}>
         <AnimatePresence exitBeforeEnter initial={true}>
           <Component {...pageProps} key={router.route} />
