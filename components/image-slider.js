@@ -2,7 +2,6 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { wrap } from "popmotion";
 import {
-  chakra,
   IconButton,
   Box,
   Image,
@@ -12,8 +11,6 @@ import {
 
 import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
 import { AiFillEye } from "react-icons/ai";
-
-const StyledBox = chakra(motion.div);
 
 const variants = {
   enter: (direction) => {
@@ -46,11 +43,9 @@ const swipePower = (offset, velocity) => {
 
 export const ImageSlider = ({ images, title, ...props }) => {
   const [[page, direction], setPage] = useState([0, 0]);
-  // zoom in image
-  const [isZoom, setIsZoom] = useState(false);
 
   const bg = useColorModeValue("blackAlpha.600", "whiteAlpha.800");
-  const color = useColorModeValue("#4fb6ff", "#ff7acc");
+  const color = useColorModeValue("#4fb9ff", "#ff7acc");
 
   // We paginate the images absolutely (ie 1, 2, 3, 4, 5...) and
   // then wrap that within 0-2 to find our image ID in the array below. By passing an
@@ -62,37 +57,14 @@ export const ImageSlider = ({ images, title, ...props }) => {
     setPage([page + newDirection, newDirection]);
   };
 
-  const toggleZoom = () => {
-    setTimeout(() => {
-      setIsZoom(true);
-    }, 100);
-  };
-
   return (
     <Box my={10} {...props}>
-      {isZoom && (
-        <Box
-          onClick={() => {
-            setIsZoom(false);
-          }}
-          position="fixed"
-          top="0"
-          bottom="0"
-          left="0"
-          right="0"
-          bg="#000"
-          opacity={0.8}
-          zIndex="1"
-        />
-      )}
       <AnimatePresence initial={false} custom={direction}>
-        <StyledBox
+        <Box
           display="flex"
           position="relative"
           justifyContent="center"
           alignItems="center"
-          zIndex={1}
-          animate={{ scale: isZoom ? 1.5 : 1, bottom: isZoom ? "30vh" : 0 }}
         >
           {/* position absolute = 0 height */}
           <Image
@@ -126,14 +98,11 @@ export const ImageSlider = ({ images, title, ...props }) => {
                 paginate(-1);
               }
             }}
-            // whileTap={{ scale: 1.15 }}
-            onDoubleClick={() => {
-              !isZoom && toggleZoom();
-            }}
+            whileTap={{ scale: 1.15 }}
             style={{
               position: "absolute",
               borderRadius: "20px",
-              boxShadow: "4px 8px 25px #80808060",
+              boxShadow: "3px 6px 25px #80808030",
             }}
           />
 
@@ -159,24 +128,27 @@ export const ImageSlider = ({ images, title, ...props }) => {
               />
             </Box>
           )}
-        </StyledBox>
+        </Box>
       </AnimatePresence>
       <HStack
         display="flex"
         justifyContent="center"
         alignItems="center"
         spacing="16px"
-        mt={5}
+        mt={10}
       >
         {images.map((image, idx) => (
           <IconButton
             key={image}
-            onClick={() => {
-              idx === imageIndex && toggleZoom();
-            }}
             aria-label="Indicator"
             icon={
-              idx === imageIndex && <AiFillEye style={{ fontSize: "16px" }} />
+              idx === imageIndex && (
+                <AiFillEye
+                  style={{
+                    fontSize: "16px",
+                  }}
+                />
+              )
             }
             color={color}
             isRound
