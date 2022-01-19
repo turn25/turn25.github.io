@@ -82,7 +82,8 @@ const Page = () => {
           <Box flex={1}>
             <Heading as="h2">Tuan Vu</Heading>
 
-            <TypeWritter />
+            {/* Disable Google Translate (can't remove text) */}
+            <TypeWritter className="notranslate" />
           </Box>
 
           <StyledBox
