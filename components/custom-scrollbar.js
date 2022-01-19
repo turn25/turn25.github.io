@@ -10,6 +10,7 @@ const CustomScrollbar = () => {
     <Global
       styles={css`
         body {
+          overflow-y: scroll; // stop scrollbar blinking when load static page
           /* Width */
           ::-webkit-scrollbar {
             width: 16px;

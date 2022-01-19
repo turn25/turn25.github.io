@@ -10,22 +10,30 @@ import {
   Badge,
   Image,
   Icon,
+  IconButton,
   useColorModeValue,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import { ChevronRightIcon } from "@chakra-ui/icons";
+import { ChevronRightIcon, LinkIcon } from "@chakra-ui/icons";
 import { RiHomeLine } from "react-icons/ri";
+import { useContext } from "react";
+
+import GlobalContext from "../context/global-context";
+import ImageModal from "./image-modal";
 
 const StyledDiv = chakra(motion.div);
 
 const variants = {
   offscreen: {
+    y: 20,
     opacity: 0,
   },
   onscreen: {
+    y: 0,
     opacity: 1,
     transition: {
-      type: "easeIn",
+      type: "spring",
+      stiffness: 25,
       duration: 0.8,
     },
   },
@@ -87,12 +95,14 @@ export const MetaTag = ({ children }) => (
   </Badge>
 );
 
-export const WorkImage = ({ src, alt, ...props }) => {
+export const WorkImage = ({ src, alt, id, ...props }) => {
+  const { isOpen, onOpen, onClose } = useContext(GlobalContext);
+
   return (
     <StyledDiv
       initial="offscreen"
       whileInView="onscreen"
-      viewport={{ once: true, amount: 0.75 }} // params
+      viewport={{ once: true, amount: 0.8 }} // intersectionobserve threshhold
       variants={variants}
       // styles
       bg={useColorModeValue("#f7fafc90", "#1a202c90")}
@@ -100,6 +110,7 @@ export const WorkImage = ({ src, alt, ...props }) => {
       borderRadius="lg"
       w="full"
       my={6}
+      position="relative"
       shadow="1px 2px 12px 2px #00000050"
       {...props}
     >
@@ -112,6 +123,18 @@ export const WorkImage = ({ src, alt, ...props }) => {
       <Text textAlign="center" p={2} fontSize={20} fontWeight="semibold">
         {alt}
       </Text>
+      <IconButton
+        onClick={onOpen}
+        aria-label="Zoom In Image"
+        icon={<LinkIcon />}
+        variant="ghost"
+        position="absolute"
+        right={0.5}
+        bottom={0.5}
+        _hover={{ bg: "" }}
+        _active={{ bg: "" }}
+      />
+      <ImageModal src={src} title={alt} isOpen={isOpen} onClose={onClose} />
     </StyledDiv>
   );
 };

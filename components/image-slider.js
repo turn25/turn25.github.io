@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { wrap } from "popmotion";
 import {
@@ -8,9 +8,11 @@ import {
   HStack,
   useColorModeValue,
 } from "@chakra-ui/react";
-
 import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
 import { AiFillEye } from "react-icons/ai";
+
+import GlobalContext from "../context/global-context";
+import ImageModal from "./image-modal";
 
 const variants = {
   enter: (direction) => {
@@ -43,6 +45,7 @@ const swipePower = (offset, velocity) => {
 
 export const ImageSlider = ({ images, title, ...props }) => {
   const [[page, direction], setPage] = useState([0, 0]);
+  const { isOpen, onOpen, onClose } = useContext(GlobalContext); // use global context
 
   const bg = useColorModeValue("blackAlpha.600", "whiteAlpha.800");
   const color = useColorModeValue("#4fb9ff", "#ff7acc");
@@ -139,6 +142,9 @@ export const ImageSlider = ({ images, title, ...props }) => {
       >
         {images.map((image, idx) => (
           <IconButton
+            onClick={() => {
+              idx === imageIndex && onOpen();
+            }}
             key={image}
             aria-label="Indicator"
             icon={
@@ -163,6 +169,12 @@ export const ImageSlider = ({ images, title, ...props }) => {
           />
         ))}
       </HStack>
+      <ImageModal
+        src={images[imageIndex]}
+        title={title}
+        isOpen={isOpen}
+        onClose={onClose}
+      />
     </Box>
   );
 };

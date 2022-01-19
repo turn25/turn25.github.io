@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import {
   RingLoader,
   PuffLoader,
@@ -7,7 +7,6 @@ import {
   HashLoader,
   DotLoader,
 } from "react-spinners";
-import { motion } from "framer-motion";
 import { css } from "@emotion/react";
 import {
   Box,
@@ -24,6 +23,7 @@ import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
 import { FaSun, FaMoon } from "react-icons/fa";
 
 import Section from "./section";
+import GlobalContext from "../context/global-context";
 
 const override = css`
   display: block;
@@ -46,7 +46,7 @@ const CustomLoader = ({
   initY,
   ...props
 }) => {
-  const [speed, setSpeed] = useState(1);
+  const { loaderSpeed, setLoaderSpeed } = useContext(GlobalContext);
 
   // get random loader everytime user open drawer
   useEffect(() => {
@@ -101,7 +101,7 @@ const CustomLoader = ({
                   <RingLoader
                     color={color}
                     css={override}
-                    speedMultiplier={speed}
+                    speedMultiplier={loaderSpeed}
                     size={loaderSize}
                   />
                 );
@@ -111,7 +111,7 @@ const CustomLoader = ({
                   <PuffLoader
                     color={color}
                     css={override}
-                    speedMultiplier={speed}
+                    speedMultiplier={loaderSpeed}
                     size={loaderSize}
                   />
                 );
@@ -121,7 +121,7 @@ const CustomLoader = ({
                   <CircleLoader
                     color={color}
                     css={override}
-                    speedMultiplier={speed}
+                    speedMultiplier={loaderSpeed}
                     size={loaderSize}
                   />
                 );
@@ -131,7 +131,7 @@ const CustomLoader = ({
                   <ClockLoader
                     color={color}
                     css={override}
-                    speedMultiplier={speed}
+                    speedMultiplier={loaderSpeed}
                     size={loaderSize}
                   />
                 );
@@ -141,7 +141,7 @@ const CustomLoader = ({
                   <HashLoader
                     color={color}
                     css={override}
-                    speedMultiplier={speed}
+                    speedMultiplier={loaderSpeed}
                     size={loaderSize}
                   />
                 );
@@ -151,7 +151,7 @@ const CustomLoader = ({
                   <DotLoader
                     color={color}
                     css={override}
-                    speedMultiplier={speed}
+                    speedMultiplier={loaderSpeed}
                     size={loaderSize}
                   />
                 );
@@ -180,10 +180,10 @@ const CustomLoader = ({
         <Section initY={initY} mb={0} w="60%" delay={0.6}>
           <Slider
             aria-label="Speed Multiplier Slider"
-            defaultValue={speed}
+            defaultValue={loaderSpeed}
             min={1}
             max={4}
-            onChange={(val) => setSpeed(val)}
+            onChange={(val) => setLoaderSpeed(val)}
             flex={1}
           >
             <SliderTrack>

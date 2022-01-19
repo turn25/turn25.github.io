@@ -123,6 +123,7 @@ const Post = ({ post }) => {
                 key={idx}
                 src={image}
                 alt={`${title} Image ${idx + 1}`}
+                id={path}
                 display={{ base: "block", xl: "none" }}
               />
             ))}

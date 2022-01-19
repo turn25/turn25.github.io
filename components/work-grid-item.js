@@ -1,4 +1,3 @@
-import NextImage from "next/image";
 import NextLink from "next/link";
 import {
   chakra,
@@ -10,7 +9,8 @@ import {
 } from "@chakra-ui/react";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 
-const StyledImage = chakra(NextImage);
+import BlurImage from "./blur-image";
+
 const StyledMotion = chakra(motion.div);
 
 const GridItem = ({ id, thumbnail, title, children }) => {
@@ -43,13 +43,7 @@ const GridItem = ({ id, thumbnail, title, children }) => {
             passHref
           >
             <LinkBox as="article">
-              <StyledImage
-                src={thumbnail}
-                alt={title}
-                placeholder="blue"
-                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkaP1fDwAEFgIFdzq/mQAAAABJRU5ErkJggg=="
-                borderRadius={10}
-              />
+              <BlurImage src={thumbnail} alt={title} />
               <LinkOverlay>
                 <Text as="h4" fontSize={[18, 20, 22]}>
                   {title}

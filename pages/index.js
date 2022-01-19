@@ -92,6 +92,7 @@ const Page = () => {
             align="center"
             animate={animate}
             onTap={cycle}
+            whileTap={{ scale: 1.1 }}
           >
             <Tooltip label="Click Me" placement="top">
               <Image

@@ -30,6 +30,7 @@ import Section from "./section";
 const Navbar = ({ path }) => {
   const [currLoader, setCurrLoader] = useState(0);
   const [isSelectLoader, setIsSelectLoader] = useState(false);
+  const [isHovered, setHovered] = useState(false); // hover close drawer button
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const btnRef = useRef();
@@ -102,7 +103,9 @@ const Navbar = ({ path }) => {
           <IconButton
             aria-label="Drawer Options"
             icon={<DrawerToggleButton isOpen={isOpen} />}
-            onClick={onOpen}
+            onClick={() => {
+              onOpen();
+            }}
             variant="outline"
             ref={btnRef}
             ml={2}
@@ -117,10 +120,27 @@ const Navbar = ({ path }) => {
           >
             <DrawerOverlay />
             <DrawerContent>
-              <DrawerCloseButton zIndex={10} />
+              {/* <DrawerCloseButton zIndex={10} /> */}
 
-              <DrawerHeader opacity="75%">
+              <DrawerHeader
+                opacity="75%"
+                display="flex"
+                justifyContent="space-between"
+              >
                 <ColorModeToggleButton />
+                <IconButton
+                  aria-label="Close Drawer"
+                  icon={<DrawerToggleButton isOpen={isHovered} />}
+                  onClick={() => {
+                    setHovered(true);
+                    onClose();
+                  }}
+                  variant="ghost"
+                  ref={btnRef}
+                  width="20px"
+                  onMouseEnter={() => setHovered(true)}
+                  onMouseLeave={() => setHovered(false)}
+                />
               </DrawerHeader>
 
               <DrawerBody
