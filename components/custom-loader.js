@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import {
   RingLoader,
   PuffLoader,
@@ -23,7 +23,6 @@ import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
 import { FaSun, FaMoon } from "react-icons/fa";
 
 import Section from "./section";
-import GlobalContext from "../context/global-context";
 
 const override = css`
   display: block;
@@ -36,39 +35,37 @@ const override = css`
   }
 `;
 const loaderSize = 120;
-const currLoaderLength = 5;
+const loaderLength = 5;
 
 const CustomLoader = ({
-  currLoader,
-  setCurrLoader,
+  loader,
+  setLoader,
   isSelectLoader,
   setIsSelectLoader,
+  loaderSpeed,
+  setLoaderSpeed,
   initY,
   ...props
 }) => {
-  const { loaderSpeed, setLoaderSpeed } = useContext(GlobalContext);
-
-  // get random loader everytime user open drawer
-  useEffect(() => {
-    if (!isSelectLoader) {
-      setRandomLoader();
-    }
-  }, [isSelectLoader]);
-
   const color = useColorModeValue("#3d7aed", "#ff7acc");
   const sliderIcon = useColorModeValue(FaSun, FaMoon);
   const sliderColor = useColorModeValue("#3d7aed", "#ff7acc");
 
+  // get random loader everytime user open drawer
+  useEffect(() => {
+    if (!isSelectLoader) setRandomLoader();
+  }, [isSelectLoader]);
+
   const handlePrevBtn = () => {
     setIsSelectLoader(true);
-    if (currLoader > 0) setCurrLoader((prev) => prev - 1);
-    else setCurrLoader(currLoaderLength);
+    if (loader > 0) setLoader((prev) => prev - 1);
+    else setLoader(loaderLength);
   };
 
   const handleNextBtn = () => {
     setIsSelectLoader(true);
-    if (currLoader < currLoaderLength) setCurrLoader((prev) => prev + 1);
-    else setCurrLoader(0);
+    if (loader < loaderLength) setLoader((prev) => prev + 1);
+    else setLoader(0);
   };
 
   const generateRandomNumber = (min, max) => {
@@ -76,8 +73,8 @@ const CustomLoader = ({
   };
 
   const setRandomLoader = () => {
-    const randomNumber = generateRandomNumber(0, currLoaderLength);
-    setCurrLoader(randomNumber);
+    const randomNumber = generateRandomNumber(0, loaderLength);
+    setLoader(randomNumber);
   };
 
   return (
@@ -95,7 +92,7 @@ const CustomLoader = ({
           }}
         >
           {(() => {
-            switch (currLoader) {
+            switch (loader) {
               case 0:
                 return (
                   <RingLoader

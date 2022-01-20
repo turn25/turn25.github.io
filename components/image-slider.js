@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { wrap } from "popmotion";
 import {
@@ -7,12 +7,13 @@ import {
   Image,
   HStack,
   useColorModeValue,
+  useDisclosure,
+  Tooltip,
 } from "@chakra-ui/react";
 import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
 import { AiFillEye } from "react-icons/ai";
 
-import GlobalContext from "../context/global-context";
-import ImageModal from "./image-modal";
+import ImageDrawer from "./image-drawer";
 
 const variants = {
   enter: (direction) => {
@@ -45,15 +46,11 @@ const swipePower = (offset, velocity) => {
 
 export const ImageSlider = ({ images, title, ...props }) => {
   const [[page, direction], setPage] = useState([0, 0]);
-  const { isOpen, onOpen, onClose } = useContext(GlobalContext); // use global context
-
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const bg = useColorModeValue("blackAlpha.600", "whiteAlpha.800");
   const color = useColorModeValue("#4fb9ff", "#ff7acc");
 
-  // We paginate the images absolutely (ie 1, 2, 3, 4, 5...) and
-  // then wrap that within 0-2 to find our image ID in the array below. By passing an
-  // absolute page index as the `motion` component's `key` prop, `AnimatePresence` will
-  // detect it as an entirely new image. So you can infinitely paginate as few as 1 images.
+  // find current image index
   const imageIndex = wrap(0, images.length, page);
 
   const paginate = (newDirection) => {
@@ -141,37 +138,44 @@ export const ImageSlider = ({ images, title, ...props }) => {
         mt={10}
       >
         {images.map((image, idx) => (
-          <IconButton
-            onClick={() => {
-              idx === imageIndex && onOpen();
-            }}
+          <Tooltip
             key={image}
-            aria-label="Indicator"
-            icon={
-              idx === imageIndex && (
-                <AiFillEye
-                  style={{
-                    fontSize: "16px",
-                  }}
-                />
-              )
-            }
-            color={color}
-            isRound
-            size="xs"
-            bg={bg}
-            opacity={idx === imageIndex ? 1 : 0.3}
-            transition="opacity 300ms ease-in-out"
-            boxShadow="2px 4px 14px #80808060"
-            _hover={{ bg: bg }}
-            _active={{ bg: bg }}
-            _focus={{ boxShadow: "" }}
-          />
+            label="Zoom In"
+            aria-label="A tooltip"
+            placement="top"
+            isDisabled={idx !== imageIndex}
+          >
+            <IconButton
+              onClick={() => {
+                idx === imageIndex && onOpen();
+              }}
+              aria-label="Indicator"
+              icon={
+                idx === imageIndex && (
+                  <AiFillEye
+                    style={{
+                      fontSize: "16px",
+                    }}
+                  />
+                )
+              }
+              color={color}
+              isRound
+              size="xs"
+              bg={bg}
+              opacity={idx === imageIndex ? 1 : 0.3}
+              transition="opacity 300ms ease-in-out"
+              boxShadow="2px 4px 14px #80808060"
+              _hover={{ bg: bg }}
+              _active={{ bg: bg }}
+              _focus={{ boxShadow: "" }}
+            />
+          </Tooltip>
         ))}
       </HStack>
-      <ImageModal
+      <ImageDrawer
         src={images[imageIndex]}
-        title={title}
+        title={`${title} Picture ${imageIndex + 1}`}
         isOpen={isOpen}
         onClose={onClose}
       />

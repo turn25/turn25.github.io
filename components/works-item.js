@@ -12,14 +12,13 @@ import {
   Icon,
   IconButton,
   useColorModeValue,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { ChevronRightIcon, LinkIcon } from "@chakra-ui/icons";
 import { RiHomeLine } from "react-icons/ri";
-import { useContext } from "react";
 
-import GlobalContext from "../context/global-context";
-import ImageModal from "./image-modal";
+import ImageDrawer from "./image-drawer";
 
 const StyledDiv = chakra(motion.div);
 
@@ -96,7 +95,7 @@ export const MetaTag = ({ children }) => (
 );
 
 export const WorkImage = ({ src, alt, id, ...props }) => {
-  const { isOpen, onOpen, onClose } = useContext(GlobalContext);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <StyledDiv
@@ -120,7 +119,12 @@ export const WorkImage = ({ src, alt, id, ...props }) => {
         borderTopRadius="lg"
         borderBottomRadius="base"
       />
-      <Text textAlign="center" p={2} fontSize={20} fontWeight="semibold">
+      <Text
+        textAlign="center"
+        p={2}
+        fontSize={[16, null, 18]}
+        fontWeight="semibold"
+      >
         {alt}
       </Text>
       <IconButton
@@ -134,7 +138,7 @@ export const WorkImage = ({ src, alt, id, ...props }) => {
         _hover={{ bg: "" }}
         _active={{ bg: "" }}
       />
-      <ImageModal src={src} title={alt} isOpen={isOpen} onClose={onClose} />
+      <ImageDrawer src={src} title={alt} isOpen={isOpen} onClose={onClose} />
     </StyledDiv>
   );
 };

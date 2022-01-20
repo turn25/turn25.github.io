@@ -28,7 +28,8 @@ import Footer from "./footer";
 import Section from "./section";
 
 const Navbar = ({ path }) => {
-  const [currLoader, setCurrLoader] = useState(0);
+  const [loader, setLoader] = useState(0);
+  const [loaderSpeed, setLoaderSpeed] = useState(1); // drawer loader speed
   const [isSelectLoader, setIsSelectLoader] = useState(false);
   const [isHovered, setHovered] = useState(false); // hover close drawer button
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -133,7 +134,10 @@ const Navbar = ({ path }) => {
                   icon={<DrawerToggleButton isOpen={isHovered} />}
                   onClick={() => {
                     setHovered(true);
-                    onClose();
+                    setTimeout(() => {
+                      onClose();
+                      setHovered(false);
+                    }, 100);
                   }}
                   variant="ghost"
                   ref={btnRef}
@@ -198,10 +202,12 @@ const Navbar = ({ path }) => {
                   </Section>
 
                   <CustomLoader
-                    currLoader={currLoader}
-                    setCurrLoader={setCurrLoader}
+                    loader={loader}
+                    setLoader={setLoader}
                     isSelectLoader={isSelectLoader}
                     setIsSelectLoader={setIsSelectLoader}
+                    loaderSpeed={loaderSpeed}
+                    setLoaderSpeed={setLoaderSpeed}
                     initY={30}
                   />
                 </VStack>

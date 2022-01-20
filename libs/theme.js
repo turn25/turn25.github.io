@@ -76,6 +76,17 @@ const components = {
     }),
   },
 
+  Image: {
+    baseStyle: (props) => ({
+      _focus: {
+        boxShaboxShadow: mode(
+          "0 0 0 3px rgba(10, 125, 230, 0.6)",
+          "0 0 0 3px rgba(160, 125, 230, 0.6)"
+        )(props),
+      },
+    }),
+  },
+
   BreadcrumbLink: {
     baseStyle: (props) => ({
       color: mode("#3d7aed", "#ff7acc")(props),
