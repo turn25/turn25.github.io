@@ -14,7 +14,7 @@ const HobbyItem = ({ icon, onClick, delay = 0, children }) => {
   const bg = useColorModeValue("#fff", undefined);
 
   return (
-    <Tooltip label="Close" placement="top">
+    <Tooltip label="Close" aria-label="A tooltip (Close)" placement="top">
       <Button h="56px" color={color} bg={bg} onClick={onClick}>
         <motion.div
           initial={{ y: 10, opacity: 0 }}

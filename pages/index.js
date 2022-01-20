@@ -94,7 +94,7 @@ const Page = () => {
             onTap={cycle}
             whileTap={{ scale: 1.1 }}
           >
-            <Tooltip label="Click Me" placement="top">
+            <Tooltip label="Click Me" aria-label="A tooltip" placement="top">
               <Image
                 src={avatarImg}
                 alt="Profile Picture"

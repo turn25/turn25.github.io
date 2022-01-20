@@ -21,7 +21,13 @@ const GridItem = ({ id, thumbnail, title, children }) => {
   const rotateY = useTransform(x, [-100, 100], [-50, 50]);
 
   return (
-    <Tooltip label="Drag Me" placement="top" openDelay={400} closeDelay={200}>
+    <Tooltip
+      label="Drag Me"
+      aria-label="A tooltip"
+      placement="top"
+      openDelay={400}
+      closeDelay={200}
+    >
       <Box
         style={{
           perspective: 600,
