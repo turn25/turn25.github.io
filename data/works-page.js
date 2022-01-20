@@ -1,7 +1,13 @@
 import thumbnailTindog from "../public/images/works/tindog.png";
 import thumbnailDiceeGame from "../public/images/works/dicee-game.png";
 import thumbnailSimonGame from "../public/images/works/simon-game1.png";
+import thumbnailEmojipedia from "../public/images/works/emojipedia1.png";
 import thumbnailNoteKeeper from "../public/images/works/note-keeper3.png";
+import thumbnailWeatherApp from "../public/images/works/weather-app1.png";
+import thumbnailSortingVisualizerDemo from "../public/images/works/sorting-visualizer-demo1.png";
+import thumbnailTeslaClone from "../public/images/works/tesla-clone1.png";
+import thumbnailDisneyPlusClone from "../public/images/works/disney-plus-clone1.png";
+import thumbnailSpotifyClone from "../public/images/works/spotify-clone1.png";
 import thumbnailGoogleCalendar from "../public/images/works/google-calendar-clone1.png";
 import thumbnailSortingVisualizer from "../public/images/works/sorting-visualizer1.png";
 import thumbnailTypingSpeed from "../public/images/works/typing-speed2.png";
@@ -85,7 +91,7 @@ const WorksPageData = [
       "/images/works/google-calendar-clone2.png",
       "/images/works/google-calendar-clone3.png",
     ],
-    liveDemo: "https://tuanvu-calendar.vercel.app/",
+    liveDemo: "https://tuanvu-calendar.vercel.app",
     source: "https://github.com/vuquangtuan123/google-calendar-clone",
     builtWith: [
       { name: "ReactJS", destination: "https://reactjs.org" },
@@ -95,6 +101,88 @@ const WorksPageData = [
         destination: "https://www.framer.com/motion",
       },
     ],
+  },
+  {
+    id: "spotify-clone",
+    thumbnail: thumbnailSpotifyClone,
+    title: "Spotify Clone",
+    description: "Spotify Clone",
+    createdYear: 2021,
+    images: [
+      "/images/works/spotify-clone1.png",
+      "/images/works/spotify-clone2.png",
+      "/images/works/spotify-clone3.png",
+    ],
+    liveDemo: "https://tuanvu-spotify.vercel.app",
+    source: "https://github.com/vuquangtuan123/spotify-clone",
+    builtWith: [
+      { name: "ReactJS", destination: "https://reactjs.org" },
+      { name: "NextJS", destination: "https://nextjs.org" },
+      { name: "TailwindCSS", destination: "https://tailwindcss.com" },
+    ],
+  },
+  {
+    id: "disney-plus-clone",
+    thumbnail: thumbnailDisneyPlusClone,
+    title: "Disney Plus Clone",
+    description: "Disney Plus Clone",
+    createdYear: 2021,
+    images: [
+      "/images/works/disney-plus-clone1.png",
+      "/images/works/disney-plus-clone2.png",
+      "/images/works/disney-plus-clone3.png",
+      "/images/works/disney-plus-clone4.png",
+    ],
+    liveDemo: "https://tuanvu-disneyplus-clone.vercel.app/",
+    source: "https://github.com/vuquangtuan123/disney-plus-clone",
+    builtWith: [{ name: "ReactJS", destination: "https://reactjs.org" }],
+  },
+  {
+    id: "tesla-clone",
+    thumbnail: thumbnailTeslaClone,
+    title: "Tesla Clone",
+    description: "Tesla Clone",
+    createdYear: 2021,
+    images: [
+      "/images/works/tesla-clone1.png",
+      "/images/works/tesla-clone2.png",
+      "/images/works/tesla-clone3.png",
+    ],
+    liveDemo: "https://tuanvu-testla-clone.netlify.app",
+    source: "https://github.com/vuquangtuan123/tesla-clone",
+    builtWith: [{ name: "ReactJS", destination: "https://reactjs.org" }],
+  },
+  {
+    id: "sorting-visualzier-demo",
+    thumbnail: thumbnailSortingVisualizerDemo,
+    title: "Sorting Visualizer Demo",
+    description: "A demo for Sorting Visualizer App",
+    createdYear: 2021,
+    images: [
+      "/images/works/sorting-visualizer-demo1.png",
+      "/images/works/sorting-visualizer-demo2.png",
+      "/images/works/sorting-visualizer-demo3.png",
+    ],
+    liveDemo: "https://tuanvu-sorting-visualizer.netlify.app",
+    builtWith: [
+      { name: "ReactJS", destination: "https://reactjs.org" },
+      { name: "TailwindCSS", destination: "https://tailwindcss.com" },
+    ],
+  },
+  {
+    id: "weather-app",
+    thumbnail: thumbnailWeatherApp,
+    title: "Weather App",
+    description: "A simple Weather App",
+    createdYear: 2021,
+    images: [
+      "/images/works/weather-app1.png",
+      "/images/works/weather-app2.png",
+      "/images/works/weather-app3.png",
+    ],
+    liveDemo: "https://vuquangtuan123.github.io/weather-app-fetch",
+    source: "https://github.com/vuquangtuan123/weather-app-fetch",
+    builtWith: [{ name: "ReactJS", destination: "https://reactjs.org" }],
   },
   {
     id: "note-keeper",
@@ -107,12 +195,23 @@ const WorksPageData = [
       "/images/works/note-keeper2.png",
       "/images/works/note-keeper3.png",
     ],
-    liveDemo: "https://simple-keeper-app.netlify.app/",
+    liveDemo: "https://simple-keeper-app.netlify.app",
     source: "https://github.com/vuquangtuan123/simple-keeper-app",
     builtWith: [
       { name: "ReactJS", destination: "https://reactjs.org" },
       { name: "Material UI", destination: "https://mui.com/" },
     ],
+  },
+  {
+    id: "emojipedia",
+    thumbnail: thumbnailEmojipedia,
+    title: "Emojipedia",
+    description: "Emojipedia",
+    createdYear: 2021,
+    images: ["/images/works/emojipedia1.png"],
+    liveDemo: "https://tuanvu-emojipedia.netlify.app",
+    source: "https://github.com/vuquangtuan123/emojipedia",
+    builtWith: [{ name: "ReactJS", destination: "https://reactjs.org" }],
   },
   {
     id: "simon-game",
