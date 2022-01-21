@@ -127,60 +127,62 @@ export const FeatureItem = ({
         <chakra.span
           // toast
           onClick={() => {
-            // use uuid to create new id for each toast
-            const id = uuidv4();
-            toast({
-              id,
-              position: "bottom",
-              render: () => (
-                <Box
-                  color="#f7fafc"
-                  py={4}
-                  px={3}
-                  bg={bg}
-                  borderRadius="5px"
-                  position="relative"
-                >
-                  <Box align="center" position="relative">
-                    <InfoIcon
-                      onClick={() => toast.closeAll()}
-                      cursor="pointer"
+            if (source) {
+              // use uuid to create new id for each toast
+              const id = uuidv4();
+              toast({
+                id,
+                position: "bottom",
+                render: () => (
+                  <Box
+                    color="#f7fafc"
+                    py={4}
+                    px={3}
+                    bg={bg}
+                    borderRadius="5px"
+                    position="relative"
+                  >
+                    <Box align="center" position="relative">
+                      <InfoIcon
+                        onClick={() => toast.closeAll()}
+                        cursor="pointer"
+                        position="absolute"
+                        top={1}
+                        left={2}
+                      />
+                      <Link
+                        href={source}
+                        target="_blank"
+                        color="unset"
+                        style={{ textDecoration: "none", boxShadow: "none" }}
+                      >
+                        <Text
+                          fontSize={17}
+                          align="center"
+                          fontWeight="semibold"
+                          display="inline"
+                        >
+                          See demo for more detail
+                        </Text>
+                      </Link>
+                    </Box>
+                    <IconButton
+                      onClick={() => {
+                        toast.close(id);
+                      }}
+                      aria-label="Close Toast"
+                      icon={<CloseIcon />}
+                      variant="toastBtn"
+                      size="xs"
                       position="absolute"
                       top={1}
-                      left={2}
+                      right={1}
+                      className="no-translate"
                     />
-                    <Link
-                      href={source}
-                      target="_blank"
-                      color="unset"
-                      style={{ textDecoration: "none", boxShadow: "none" }}
-                    >
-                      <Text
-                        fontSize={17}
-                        align="center"
-                        fontWeight="semibold"
-                        display="inline"
-                      >
-                        See demo for more detail
-                      </Text>
-                    </Link>
                   </Box>
-                  <IconButton
-                    onClick={() => {
-                      toast.close(id);
-                    }}
-                    aria-label="Close Toast"
-                    icon={<CloseIcon />}
-                    variant="toastBtn"
-                    size="xs"
-                    position="absolute"
-                    top={1}
-                    right={1}
-                    className="no-translate"
-                  />
-                </Box>
-              ),
-            });
+                ),
+              });
+            }
           }}
           // styles
           color={color}
