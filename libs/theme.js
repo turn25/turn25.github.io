@@ -44,6 +44,7 @@ const components = {
         color: mode("#3d7aed", "#ff7acc")(props),
       }),
 
+      // Icon Button
       navBtn: (props) => ({
         color: "#f7fafc",
         bg: mode("blue.400", "gray.400")(props),
@@ -60,6 +61,16 @@ const components = {
           bg: mode("blue.800", "gray.800")(props),
         },
       }),
+
+      // Icon Button
+      toastBtn: {
+        color: "#f7fafc",
+        _hover: { bg: "#dfdfdf40" },
+        _active: { bg: "#dfdfdf" },
+        _focus: {
+          boxShadow: "",
+        },
+      },
     },
   },
 

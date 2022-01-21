@@ -70,7 +70,7 @@ const Post = ({ post }) => {
                 <FeatureItem
                   key={idx}
                   icon={MdCheckCircle}
-                  src={source}
+                  demo={liveDemo}
                   delay={idx / 3}
                 >
                   {feature}

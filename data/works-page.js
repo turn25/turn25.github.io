@@ -18,7 +18,18 @@ const WorksPageData = [
     id: "typing-speed",
     thumbnail: thumbnailTypingSpeed,
     title: "Typing Speed App",
-    description: "Typing Speed App",
+    description:
+      "An app to check your Word Per Minute(WPM) and help you improve your typing speed.",
+    features: [
+      "Responsive Design",
+      "Support Dark Theme",
+      "Generate Random Words",
+      "Highlight Correct Character",
+      "Highlight Incorrect Character",
+      "Highlight Incorrect Word",
+      "Allow to Skip Word",
+      "Display Result When Complete",
+    ],
     createdYear: 2022,
     images: [
       "/images/works/typing-speed1.png",
@@ -39,7 +50,17 @@ const WorksPageData = [
     id: "you-share",
     thumbnail: thumbnailYouShare,
     title: "You Share App",
-    description: "Youshare Social Media App",
+    description:
+      "An image sharing social media app to share everything you like",
+    features: [
+      "Responsive Design",
+      "Login/Register with Google Account",
+      "Search Filter",
+      "Create New Pin",
+      "Display All Pin Comment",
+      "Filter Pin By Category",
+      "Add User Profile Page",
+    ],
     createdYear: 2022,
     images: [
       "/images/works/youshare1.png",
@@ -62,14 +83,34 @@ const WorksPageData = [
     id: "sorting-visualizer",
     thumbnail: thumbnailSortingVisualizer,
     title: "Sorting Visualizer",
-    description: "Sorting Visualizer App",
+    description:
+      "An app to visualize classic sorting algorithms such as buble sort, merge sort, quick sort, heap sort,etc...",
+    features: [
+      "Responsive Design",
+      "Selection Sort Visualizer",
+      "Buble Sort Visualizer",
+      "Insertion Sort Visualizer",
+      "Shell Sort Visualizer",
+      "Quick Sort Visualizer",
+      "Merge Sort Visualizer",
+      "Heap Sort Visualizer",
+      "Generate Random Array",
+      "Change Array Length",
+      "Input An Array",
+      "Change Sorting Speed",
+      "Asceding/Descending Order",
+      "Pause/Resume Function",
+      "Step Preview Forward/Backward",
+      "Display Sorting Legend/Info",
+      "Display Sort Time",
+    ],
     createdYear: 2021,
     images: [
       "/images/works/sorting-visualizer1.png",
       "/images/works/sorting-visualizer2.gif",
       "/images/works/sorting-visualizer3.gif",
     ],
-    liveDemo: "https://vuquangtuan123.github.io/sorting-visualizers",
+    liveDemo: "https://vuquangtuan123.github.io/sorting-visualizer",
     source: "https://github.com/vuquangtuan123/sorting-visualizer",
     builtWith: [
       { name: "ReactJS", destination: "https://reactjs.org" },
@@ -84,7 +125,15 @@ const WorksPageData = [
     id: "google-calendar-clone",
     thumbnail: thumbnailGoogleCalendar,
     title: "Google Calendar Clone",
-    description: "Google Calendar Clone",
+    description: "An app to help you keep track of what you do everyday",
+    features: [
+      "Responsive Design",
+      "Display A Completed Calendar",
+      "Sidebar Calendar",
+      "Auto Highlight Today",
+      "Add New Event",
+      "Filter Events By Label",
+    ],
     createdYear: 2021,
     images: [
       "/images/works/google-calendar-clone1.png",
@@ -95,6 +144,7 @@ const WorksPageData = [
     source: "https://github.com/vuquangtuan123/google-calendar-clone",
     builtWith: [
       { name: "ReactJS", destination: "https://reactjs.org" },
+      { name: "DayJS", destination: "https://day.js.org" },
       { name: "TailwindCSS", destination: "https://tailwindcss.com" },
       {
         name: "Framer Motion",
@@ -106,7 +156,14 @@ const WorksPageData = [
     id: "spotify-clone",
     thumbnail: thumbnailSpotifyClone,
     title: "Spotify Clone",
-    description: "Spotify Clone",
+    description:
+      "A Spotify Clone built with NextJS and TailwindCSS using Spotify API",
+    features: [
+      "Responsive Design",
+      "Login With Spotify API",
+      "Display All Playlists",
+      "Display All Songs In Playlist",
+    ],
     createdYear: 2021,
     images: [
       "/images/works/spotify-clone1.png",
@@ -126,6 +183,7 @@ const WorksPageData = [
     thumbnail: thumbnailDisneyPlusClone,
     title: "Disney Plus Clone",
     description: "Disney Plus Clone",
+    features: ["Responsive Design"],
     createdYear: 2021,
     images: [
       "/images/works/disney-plus-clone1.png",
@@ -142,6 +200,7 @@ const WorksPageData = [
     thumbnail: thumbnailTeslaClone,
     title: "Tesla Clone",
     description: "Tesla Clone",
+    features: ["Responsive Design"],
     createdYear: 2021,
     images: [
       "/images/works/tesla-clone1.png",
@@ -158,10 +217,11 @@ const WorksPageData = [
     title: "Sorting Visualizer Demo",
     description: "A demo for Sorting Visualizer App",
     features: [
-      "Selection Sort",
-      "Bubble Sort",
-      "Merge Sort",
-      "Quick Sort",
+      "Responsive Design",
+      "Selection Sort Visualizer",
+      "Bubble Sort Visualizer",
+      "Merge Sort Visualizer",
+      "Quick Sort Visualizer",
       "Generate Random Array",
       "Change Array Length",
       "Change Sorting Speed",
@@ -183,6 +243,7 @@ const WorksPageData = [
     thumbnail: thumbnailWeatherApp,
     title: "Weather App",
     description: "A simple Weather App",
+    features: ["Get Current Weather Info"],
     createdYear: 2021,
     images: [
       "/images/works/weather-app1.png",
@@ -198,6 +259,7 @@ const WorksPageData = [
     thumbnail: thumbnailNoteKeeper,
     title: "Note Keeper",
     description: "A simple Note Keeper App",
+    features: ["Add New Note", "Delete Existed Note"],
     createdYear: 2021,
     images: [
       "/images/works/note-keeper1.png",
@@ -226,6 +288,11 @@ const WorksPageData = [
     id: "simon-game",
     thumbnail: thumbnailSimonGame,
     title: "Simon Game",
+    features: [
+      "Responsive Design",
+      "Auto Add New Level",
+      "Display Remaining Step",
+    ],
     description: "A simple Simon Game",
     createdYear: 2021,
     images: ["/images/works/simon-game1.png", "/images/works/simon-game2.png"],
@@ -237,6 +304,7 @@ const WorksPageData = [
     id: "dicee-game",
     thumbnail: thumbnailDiceeGame,
     title: "Dicee Game",
+    features: ["Responsive Design"],
     description: "A simple Dicee Game",
     createdYear: 2021,
     images: ["/images/works/dicee-game.png"],
@@ -247,9 +315,15 @@ const WorksPageData = [
     thumbnail: thumbnailTindog,
     title: "Tindog",
     description: "A simple Landing Page",
+    features: ["Responsive Design"],
     createdYear: 2021,
     images: ["/images/works/tindog.png"],
-    builtWith: [{ name: "HTML" }, { name: "CSS" }, { name: "Javascript" }],
+    builtWith: [
+      { name: "HTML" },
+      { name: "Bootstrap", destination: "https://getbootstrap.com" },
+      { name: "CSS" },
+      { name: "Javascript" },
+    ],
   },
 ];
 

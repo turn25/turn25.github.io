@@ -107,12 +107,15 @@ export const MetaTag = ({ children }) => (
 export const FeatureItem = ({
   icon,
   delay = 0,
-  source,
+  demo: source,
   children,
   ...props
 }) => {
   const toast = useToast();
   const bg = useColorModeValue("blue.500", "teal.500");
+  const color = useColorModeValue("green.500", "teal.400");
+  const hoverColor = useColorModeValue("purple", "#f7fafc");
+  const activeColor = useColorModeValue("purple.700", "#fff");
 
   return (
     <motion.div
@@ -131,7 +134,7 @@ export const FeatureItem = ({
               position: "bottom",
               render: () => (
                 <Box
-                  color="white"
+                  color="#f7fafc"
                   py={4}
                   px={3}
                   bg={bg}
@@ -149,8 +152,8 @@ export const FeatureItem = ({
                     <Link
                       href={source}
                       target="_blank"
-                      color=""
-                      style={{ textDecoration: "none" }}
+                      color="unset"
+                      style={{ textDecoration: "none", boxShadow: "none" }}
                     >
                       <Text
                         fontSize={17}
@@ -168,14 +171,11 @@ export const FeatureItem = ({
                     }}
                     aria-label="Close Toast"
                     icon={<CloseIcon />}
+                    variant="toastBtn"
                     size="xs"
                     position="absolute"
                     top={1}
                     right={1}
-                    variant="ghost"
-                    color="#fff"
-                    _hover={{ bg: "#dfdfdf40" }}
-                    _active={{ bg: "#dfdfdf" }}
                     className="no-translate"
                   />
                 </Box>
@@ -183,10 +183,12 @@ export const FeatureItem = ({
             });
           }}
           // styles
-          color={useColorModeValue("green.500", "teal.400")}
-          _hover={{ color: useColorModeValue("purple", "white") }}
+          color={color}
+          _hover={{ color: hoverColor, fontWeight: "bold" }}
+          _active={{ color: activeColor, fontWeight: "extrabold" }}
+          backdropFilter="blur(5px)"
           cursor="pointer"
-          backdropFilter="blur(10px)"
+          transition="all 200ms ease-in"
           {...props}
         >
           <ListIcon as={icon} />
@@ -238,8 +240,8 @@ export const WorkImage = ({ src, alt, id, ...props }) => {
         position="absolute"
         right={0.5}
         bottom={0.5}
-        _hover={{ bg: "" }}
-        _active={{ bg: "" }}
+        _hover={{ bg: "unset" }}
+        _active={{ bg: "unset" }}
       />
       <ImageDrawer src={src} title={alt} isOpen={isOpen} onClose={onClose} />
     </StyledDiv>
