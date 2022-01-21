@@ -30,7 +30,7 @@ import { FaGuitar } from "react-icons/fa";
 
 import TypeWritter from "../components/typewriter";
 import Section from "../components/section";
-import Paragraph from "../components/paragraph";
+import { Paragraph } from "../components/paragraph";
 import {
   EducationSection,
   EducationYear,

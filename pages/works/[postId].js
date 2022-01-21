@@ -1,6 +1,7 @@
 import {
   Container,
   Box,
+  Text,
   List,
   ListItem,
   Link,
@@ -9,14 +10,16 @@ import {
 } from "@chakra-ui/react";
 import { ExternalLinkIcon, Search2Icon } from "@chakra-ui/icons";
 import { IoRocket } from "react-icons/io5";
+import { MdCheckCircle } from "react-icons/md";
 
 import Layout from "../../components/layouts/layout";
 import {
   WorkBreadCrumb,
   MetaTag,
+  FeatureItem,
   WorkImage,
 } from "../../components/works-item";
-import Paragraph from "../../components/paragraph";
+import { Paragraph, ParagraphWrapper } from "../../components/paragraph";
 import { ImageSlider } from "../../components/image-slider";
 import Section from "../../components/section";
 
@@ -31,6 +34,7 @@ const Post = ({ post }) => {
     id: path,
     title,
     description,
+    features,
     images,
     createdYear: year,
     liveDemo,
@@ -56,6 +60,26 @@ const Post = ({ post }) => {
 
         <Paragraph>{description}</Paragraph>
 
+        {features && (
+          <ParagraphWrapper my={2}>
+            <Text fontWeight="bold" fontSize={20} mb={1}>
+              Main Features:
+            </Text>
+            <List spacing={1}>
+              {features.map((feature, idx) => (
+                <FeatureItem
+                  key={idx}
+                  icon={MdCheckCircle}
+                  src={source}
+                  delay={idx / 3}
+                >
+                  {feature}
+                </FeatureItem>
+              ))}
+            </List>
+          </ParagraphWrapper>
+        )}
+
         <List my={4} spacing={2}>
           <Section delay={0.1} mb={0}>
             {liveDemo && (
@@ -63,7 +87,7 @@ const Post = ({ post }) => {
                 <MetaTag>Live Demo</MetaTag>
                 <Link href={liveDemo} target="_blank">
                   {liveDemo}
-                  <Icon as={IoRocket} mx="2px" />
+                  <Icon as={IoRocket} mx="2px" mb="-4px" />
                 </Link>
               </ListItem>
             )}

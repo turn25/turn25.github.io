@@ -157,6 +157,15 @@ const WorksPageData = [
     thumbnail: thumbnailSortingVisualizerDemo,
     title: "Sorting Visualizer Demo",
     description: "A demo for Sorting Visualizer App",
+    features: [
+      "Selection Sort",
+      "Bubble Sort",
+      "Merge Sort",
+      "Quick Sort",
+      "Generate Random Array",
+      "Change Array Length",
+      "Change Sorting Speed",
+    ],
     createdYear: 2021,
     images: [
       "/images/works/sorting-visualizer-demo1.png",
