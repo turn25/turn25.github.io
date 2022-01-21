@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import {
   Drawer,
   DrawerContent,
@@ -9,6 +9,7 @@ import {
   Text,
   Image,
   Link,
+  useOutsideClick,
   useColorModeValue,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
@@ -19,13 +20,30 @@ import Footer from "./footer";
 
 const ImageDrawer = ({ src, title, isOpen, onClose }) => {
   const [isHovered, setHovered] = useState(false);
+  const btnRef = useRef();
+  const imageRef = useRef();
+
+  useOutsideClick({
+    ref: imageRef,
+    handler: () =>
+      isOpen &&
+      setTimeout(() => {
+        onClose();
+      }, 100),
+  });
 
   const bg = useColorModeValue("#f2f1ed", "#202020");
-  const imageShadow = `0 0 12px ${useColorModeValue("#00000030", "#ffffff20")}`;
+  const imageShadow = `0 0 16px ${useColorModeValue("#00000030", "#ffffff15")}`;
   const scrollbarThumbBg = useColorModeValue("#00000060", "#ffffff60");
 
   return (
-    <Drawer isOpen={isOpen} onClose={onClose} size="full" placement="bottom">
+    <Drawer
+      isOpen={isOpen}
+      onClose={onClose}
+      size="full"
+      placement="bottom"
+      initialFocusRef={btnRef}
+    >
       <DrawerContent bg={bg}>
         <DrawerHeader
           display="flex"
@@ -39,16 +57,26 @@ const ImageDrawer = ({ src, title, isOpen, onClose }) => {
             aria-label="Close Drawer"
             icon={<DrawerToggleButton isOpen={isHovered} />}
             onClick={() => {
-              setHovered(true);
-              setTimeout(() => {
-                onClose();
-                setHovered(false);
-              }, 100);
+              onClose();
+              setHovered(false);
             }}
             variant="ghost"
             width="20px"
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
+            ref={btnRef}
+            display={{ base: "none", md: "flex" }}
+          />
+
+          {/* mobile */}
+          <IconButton
+            aria-label="Close Drawer"
+            icon={<DrawerToggleButton isOpen={true} />}
+            onClick={onClose}
+            variant="ghost"
+            width="20px"
+            ref={btnRef}
+            display={{ base: "flex", md: "none" }}
           />
         </DrawerHeader>
         <DrawerBody
@@ -81,6 +109,7 @@ const ImageDrawer = ({ src, title, isOpen, onClose }) => {
               damping: 20,
             }}
             style={{ position: "relative" }}
+            ref={imageRef}
           >
             <Image
               src={src}

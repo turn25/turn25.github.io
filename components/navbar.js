@@ -117,7 +117,7 @@ const Navbar = ({ path }) => {
             isOpen={isOpen}
             placement="right"
             onClose={onClose}
-            finalFocusRef={btnRef}
+            initialFocusRef={btnRef}
           >
             <DrawerOverlay />
             <DrawerContent>

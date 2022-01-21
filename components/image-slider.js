@@ -67,11 +67,7 @@ export const ImageSlider = ({ images, title, ...props }) => {
           alignItems="center"
         >
           {/* position absolute = 0 height */}
-          <Image
-            src={images[0]}
-            alt="placeholder"
-            style={{ display: "block", opacity: 0, zIndex: -1000 }}
-          />
+          <Box w="100%" h="300px" />
           <motion.img
             key={page}
             src={images[imageIndex]}
