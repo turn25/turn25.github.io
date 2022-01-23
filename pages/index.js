@@ -5,6 +5,7 @@ import {
   Box,
   Center,
   Heading,
+  Text,
   Button,
   Image,
   Link,
@@ -22,12 +23,14 @@ import {
   RiGameFill,
   RiTwitterFill,
   RiGithubFill,
+  RiLinkedinBoxFill,
 } from "react-icons/ri";
 import { AiFillRead } from "react-icons/ai";
 import { MdMovieFilter } from "react-icons/md";
 import { GiDonut } from "react-icons/gi";
 import { FaGuitar } from "react-icons/fa";
 
+import WavingHandEmoji from "../components/hand-emoji";
 import TypeWritter from "../components/typewriter";
 import Section from "../components/section";
 import { Paragraph } from "../components/paragraph";
@@ -66,13 +69,16 @@ const Page = () => {
           p={3}
           my={{ base: 6, md: 4 }}
           borderRadius={10}
-          align="center"
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
           fontSize={[18, 20, 22]}
           bg={boxBg}
           boxShadow="sm"
           backdropFilter="blur(5px)"
         >
-          Hello, I&#39;m Tuan 👋
+          <Text>Hello, I&#39;m Tuan&nbsp;</Text>
+          <WavingHandEmoji>👋</WavingHandEmoji>
         </Box>
         {/* Name */}
         <Box
@@ -187,6 +193,22 @@ const Page = () => {
                   colorScheme={useColorModeValue("blue", "gray")} // color.200
                 >
                   @tuanvuq123
+                </Button>
+              </Link>
+            </ListItem>
+
+            <ListItem>
+              <Link
+                href="https://www.linkedin.com/in/tuan-vu-46a06922a/"
+                target="_blank"
+                style={{ textDecoration: "none" }}
+              >
+                <Button
+                  leftIcon={<RiLinkedinBoxFill />}
+                  variant="ghost"
+                  colorScheme={useColorModeValue("blue", "gray")} // color.200
+                >
+                  Tuan Vu
                 </Button>
               </Link>
             </ListItem>
