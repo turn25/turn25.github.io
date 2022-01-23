@@ -71,7 +71,7 @@ const Post = ({ post }) => {
                   key={idx}
                   icon={MdCheckCircle}
                   demo={liveDemo}
-                  delay={idx / 3}
+                  delay={idx / 4}
                 >
                   {feature}
                 </FeatureItem>
