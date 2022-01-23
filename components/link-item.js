@@ -46,12 +46,13 @@ export const LinkItem = ({ href, path, children, target, ...props }) => {
     <NextLink href={href} passHref>
       <Link
         p={2}
+        borderRadius="4px"
         bg={isActive ? navbarColor : undefined}
         color={isActive ? activeColor : inactiveColor}
         target={target}
-        borderRadius="sm"
         _hover={{
           background: isActive ? hoverActiveBgColor : undefined,
+          borderRadius: "lg",
         }}
         _active={{
           background: isActive ? hoverActiveBgColor : undefined,
@@ -92,7 +93,7 @@ export const DrawerLinkBtn = ({
     <NextLink href={href} passHref>
       <motion.li
         whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.5 }}
+        whileTap={{ scale: 0.75 }}
         transition={{
           scale: { type: "spring", stiffness: 100 },
         }}

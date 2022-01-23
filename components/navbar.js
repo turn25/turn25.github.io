@@ -13,11 +13,15 @@ import {
   DrawerHeader,
   DrawerOverlay,
   DrawerContent,
-  DrawerCloseButton,
   useColorModeValue,
   useDisclosure,
 } from "@chakra-ui/react";
-import { RiHomeLine, RiStackLine, RiGithubFill } from "react-icons/ri";
+import {
+  RiHomeLine,
+  RiStackLine,
+  RiGithubFill,
+  RiMailLine,
+} from "react-icons/ri";
 
 import Logo from "./logo";
 import ColorModeToggleButton from "./color-mode-switcher";
@@ -84,6 +88,15 @@ const Navbar = ({ path }) => {
           >
             <RiStackLine />
             Works
+          </LinkItem>
+          <LinkItem
+            href="/contact"
+            path={path}
+            px={2}
+            style={{ textDecoration: "none" }}
+          >
+            <RiMailLine />
+            Contact
           </LinkItem>
           <LinkItem
             href="https://github.com/vuquangtuan123"
@@ -165,7 +178,7 @@ const Navbar = ({ path }) => {
                   },
                 }}
               >
-                <VStack align="stretch" spacing={28}>
+                <VStack align="stretch" spacing={24}>
                   <Section initY={30} delay={0.1}>
                     <VStack align="stretch" spacing={4} flex={1}>
                       <DrawerLinkBtn
@@ -189,12 +202,22 @@ const Navbar = ({ path }) => {
                       </DrawerLinkBtn>
 
                       <DrawerLinkBtn
+                        href="/contact"
+                        path={path}
+                        onClick={handleCloseDrawer}
+                        leftIcon={<RiMailLine />}
+                        delay="0.3"
+                      >
+                        Contact Me
+                      </DrawerLinkBtn>
+
+                      <DrawerLinkBtn
                         href="https://github.com/vuquangtuan123"
                         path={path}
                         onClick={handleCloseDrawer}
                         leftIcon={<RiGithubFill />}
                         target="_blank"
-                        delay="0.3"
+                        delay="0.4"
                       >
                         My Github
                       </DrawerLinkBtn>
