@@ -1,6 +1,4 @@
 import {
-  chakra,
-  shouldForwardProp,
   Container,
   Center,
   Heading,
@@ -9,60 +7,42 @@ import {
   FormControl,
   FormLabel,
   Textarea,
-  Input,
   useToast,
+  useDisclosure,
   useColorModeValue,
 } from "@chakra-ui/react";
 import emailjs from "@emailjs/browser";
 import { Form, Formik } from "formik";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import * as Yup from "yup";
+import { RiUser3Line, RiMailLine } from "react-icons/ri";
 
 import Layout from "../components/layouts/layout";
-
-const variants = {
-  hidden: { opacity: 0, x: -20 },
-  enter: { opacity: 1, x: 0 },
-  exit: { opacity: 0, x: -20 },
-};
-
-const StyledP = chakra(motion.p, {
-  shouldForwardProp: (prop) => {
-    const isChakraProp = shouldForwardProp(prop); // chakra ui props
-    const motionProp = "transition";
-    return isChakraProp || motionProp;
-  },
-});
-
-const AnimatedFormErrorMessage = ({ children, ...props }) => {
-  const color = useColorModeValue("red.500", "#e879f9");
-
-  return (
-    <StyledP
-      initial="hidden"
-      animate="enter"
-      exit="exit"
-      transition={{ type: "easeInOut" }}
-      variants={variants}
-      color={color}
-      mt={1}
-      fontSize={14}
-      fontWeight="semibold"
-      {...props}
-    >
-      {children}
-    </StyledP>
-  );
-};
+import CustomAlertDialog from "../components/custom-alert-dialog";
+import AnimatedFormErrorMessage from "../components/form-error-message";
+import CustomInput from "../components/custom-input";
 
 const Works = () => {
   const toast = useToast();
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const bg = useColorModeValue("#ffffff", "gray.700");
   const asteriskColor = useColorModeValue("#e53e3e", "#9f7aea");
   const focusBorderColor = useColorModeValue("blue.400", "teal.400");
   const errorBorderColor = useColorModeValue("red.500", "purple.400");
   const scrollbarThumbBg = useColorModeValue("#00000060", "#ffffff60");
   const btnColor = useColorModeValue("blue", "teal");
+
+  const FormSubmitSchema = Yup.object({
+    name: Yup.string()
+      .min(4, "Too short!")
+      .max(40, "Must be 40 characters or less")
+      .required("Required"),
+    email: Yup.string().email("Invalid email address").required("Required"),
+    message: Yup.string()
+      .min(5, "Too short!")
+      .max(500, "Must be 500 characters or less")
+      .required("Required"),
+  });
 
   const sendEmail = (object) => {
     emailjs
@@ -100,7 +80,14 @@ const Works = () => {
         <Center my={{ base: 6, md: 4 }}>
           <Heading as="h1">Contact Me</Heading>
         </Center>
-        <Box bg={bg} borderRadius="lg" shadow="lg" py={4} px={8} opacity="90%">
+        <Box
+          bg={bg}
+          borderRadius="lg"
+          shadow="lg"
+          py={4}
+          px={{ base: 4, md: 8 }}
+          opacity="90%"
+        >
           {/* Formik */}
           <Formik
             initialValues={{
@@ -108,76 +95,42 @@ const Works = () => {
               email: "",
               message: "",
             }}
-            validationSchema={Yup.object({
-              name: Yup.string()
-                .max(40, "Must be 40 characters or less")
-                .required("Required"),
-              email: Yup.string()
-                .email("Invalid email address")
-                .required("Required"),
-              message: Yup.string()
-                .max(500, "Must be 500 characters or less")
-                .required("Required"),
-            })}
+            validationSchema={FormSubmitSchema}
             onSubmit={(values, { setSubmitting }) => {
+              // handle submit
               setTimeout(() => {
-                sendEmail(values);
+                // sendEmail(values);
+                console.log(values);
                 setSubmitting(false);
+                toast({
+                  title: "Success!",
+                  status: "success",
+                  isClosable: true,
+                });
               }, 1000);
             }}
           >
             {(formik) => (
               <Form>
-                <FormControl
-                  isInvalid={formik.errors.name && formik.touched.name}
-                >
-                  <FormLabel htmlFor="name">
-                    Full Name
-                    <span style={{ color: asteriskColor }}>&nbsp;*</span>
-                  </FormLabel>
-                  <Input
-                    {...formik.getFieldProps("name")} // get name
-                    id="name"
-                    name="name"
-                    placeholder="Your Full Name"
-                    focusBorderColor={focusBorderColor}
-                    errorBorderColor={errorBorderColor}
-                  />
+                <CustomInput
+                  htmlFor="name"
+                  label="Full Name"
+                  type="text"
+                  id="name"
+                  name="name"
+                  icon={RiUser3Line}
+                  placeholder="Full Name"
+                />
 
-                  <AnimatePresence>
-                    {formik.errors.name && formik.touched.name && (
-                      <AnimatedFormErrorMessage>
-                        {formik.errors.name}
-                      </AnimatedFormErrorMessage>
-                    )}
-                  </AnimatePresence>
-                </FormControl>
-
-                <FormControl
-                  isInvalid={formik.errors.email && formik.touched.email}
-                >
-                  <FormLabel htmlFor="email" mt={4}>
-                    Email address
-                    <span style={{ color: asteriskColor }}>&nbsp;*</span>
-                  </FormLabel>
-                  <Input
-                    {...formik.getFieldProps("email")}
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder="Email address"
-                    focusBorderColor={focusBorderColor}
-                    errorBorderColor={errorBorderColor}
-                  />
-
-                  <AnimatePresence>
-                    {formik.errors.email && formik.touched.email && (
-                      <AnimatedFormErrorMessage>
-                        {formik.errors.email}
-                      </AnimatedFormErrorMessage>
-                    )}
-                  </AnimatePresence>
-                </FormControl>
+                <CustomInput
+                  htmlFor="email"
+                  label="Your Email"
+                  type="email"
+                  id="email"
+                  name="email"
+                  icon={RiMailLine}
+                  placeholder="Your Email 123"
+                />
 
                 <FormControl
                   isInvalid={formik.errors.message && formik.touched.message}
@@ -220,17 +173,23 @@ const Works = () => {
                 </FormControl>
 
                 <Button
-                  type="submit"
+                  onClick={onOpen}
                   isDisabled={!(formik.isValid && formik.dirty)}
                   isLoading={formik.isSubmitting}
-                  loadingText="Submitting"
+                  loadingText="Sending"
                   colorScheme={btnColor}
                   mt={6}
                   mb={2}
                   isFullWidth
                 >
-                  Submit
+                  Send
                 </Button>
+
+                <CustomAlertDialog
+                  isOpen={isOpen}
+                  onClose={onClose}
+                  onSubmit={formik.handleSubmit}
+                />
               </Form>
             )}
           </Formik>

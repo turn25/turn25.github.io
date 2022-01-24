@@ -134,8 +134,6 @@ const Navbar = ({ path }) => {
           >
             <DrawerOverlay />
             <DrawerContent>
-              {/* <DrawerCloseButton zIndex={10} /> */}
-
               <DrawerHeader
                 opacity="75%"
                 display="flex"

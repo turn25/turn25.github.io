@@ -103,19 +103,6 @@ const components = {
       color: mode("#3d7aed", "#ff7acc")(props),
     }),
   },
-
-  CloseButton: {
-    baseStyle: (props) => ({
-      color: mode("#3d7aed", "#ff7acc")(props),
-      // outline
-      _focus: {
-        boxShadow: mode(
-          "0 0 0 3px rgba(10, 125, 230, 0.6)",
-          "0 0 0 3px rgba(160, 125, 230, 0.6)"
-        )(props),
-      },
-    }),
-  },
 };
 
 const fonts = {
@@ -124,12 +111,28 @@ const fonts = {
 
 const colors = {
   violet: {
-    50: "#ffd9fe",
-    100: "#f0b1ee",
-    200: "#d687d4",
-    300: "#cf7acc",
-    400: "#c76dc4",
-    500: "#bd51b9",
+    50: "#f5f3ff",
+    100: "#ede9fe",
+    200: "#ddd6fe",
+    300: "#c4b5fd",
+    400: "#a78bfa",
+    500: "#8b5cf6",
+    600: "#7c3aed",
+    700: "#6d28d9",
+    800: "#5b21b6",
+    900: "#4c1d95",
+  },
+  fushsia: {
+    50: "#fdf4ff",
+    100: "#fae8ff",
+    200: "#f5d0fe",
+    300: "#f0abfc",
+    400: "#e879f9",
+    500: "#d946ef",
+    600: "#c026d3",
+    700: "#a21caf",
+    800: "#86198f",
+    900: "#701a75",
   },
 };
 
