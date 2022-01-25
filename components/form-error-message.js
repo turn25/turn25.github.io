@@ -26,7 +26,7 @@ const AnimatedFormErrorMessage = ({ children, ...props }) => {
       transition={{ type: "easeInOut" }}
       variants={variants}
       color={color}
-      my={2}
+      mt={2}
       fontSize={14}
       fontWeight="semibold"
       {...props}

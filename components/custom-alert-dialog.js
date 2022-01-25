@@ -7,10 +7,12 @@ import {
   AlertDialogHeader,
   AlertDialogContent,
   AlertDialogOverlay,
+  useColorModeValue,
 } from "@chakra-ui/react";
 
 const CustomAlertDialog = ({ isOpen, onClose, onSubmit }) => {
   const cancelRef = useRef();
+  const submitBtnColor = useColorModeValue("blue", "teal");
 
   return (
     <AlertDialog
@@ -21,24 +23,23 @@ const CustomAlertDialog = ({ isOpen, onClose, onSubmit }) => {
       <AlertDialogOverlay>
         <AlertDialogContent>
           <AlertDialogHeader fontSize="lg" fontWeight="bold">
-            Send Form
+            Sending Form
           </AlertDialogHeader>
 
-          <AlertDialogBody>
-            Are you sure? You can&#39;t undo this action afterwards.
-          </AlertDialogBody>
+          <AlertDialogBody>Are you sure?</AlertDialogBody>
 
           <AlertDialogFooter>
-            <Button ref={cancelRef} onClick={onClose}>
+            <Button w={24} ref={cancelRef} onClick={onClose}>
               Cancel
             </Button>
             <Button
-              colorScheme="green"
+              colorScheme={submitBtnColor}
+              w={24}
+              ml={3}
               onClick={() => {
                 onClose();
                 onSubmit();
               }}
-              ml={3}
             >
               Send
             </Button>

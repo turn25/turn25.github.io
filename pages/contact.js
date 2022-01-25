@@ -4,32 +4,29 @@ import {
   Heading,
   Box,
   Button,
-  FormControl,
-  FormLabel,
-  Textarea,
   useToast,
   useDisclosure,
   useColorModeValue,
 } from "@chakra-ui/react";
 import emailjs from "@emailjs/browser";
 import { Form, Formik } from "formik";
-import { AnimatePresence } from "framer-motion";
 import * as Yup from "yup";
 import { RiUser3Line, RiMailLine } from "react-icons/ri";
 
 import Layout from "../components/layouts/layout";
 import CustomAlertDialog from "../components/custom-alert-dialog";
-import AnimatedFormErrorMessage from "../components/form-error-message";
 import CustomInput from "../components/custom-input";
+import CustomTextarea from "../components/custom-textarea";
+import {
+  ProgressBarColor,
+  CustomProgressBar,
+  ProgressBarValue,
+} from "../components/custom-progress-bar";
 
 const Works = () => {
   const toast = useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const bg = useColorModeValue("#ffffff", "gray.700");
-  const asteriskColor = useColorModeValue("#e53e3e", "#9f7aea");
-  const focusBorderColor = useColorModeValue("blue.400", "teal.400");
-  const errorBorderColor = useColorModeValue("red.500", "purple.400");
-  const scrollbarThumbBg = useColorModeValue("#00000060", "#ffffff60");
   const btnColor = useColorModeValue("blue", "teal");
 
   const FormSubmitSchema = Yup.object({
@@ -99,14 +96,9 @@ const Works = () => {
             onSubmit={(values, { setSubmitting }) => {
               // handle submit
               setTimeout(() => {
-                // sendEmail(values);
-                console.log(values);
+                sendEmail(values);
+                // console.log(values);
                 setSubmitting(false);
-                toast({
-                  title: "Success!",
-                  status: "success",
-                  isClosable: true,
-                });
               }, 1000);
             }}
           >
@@ -132,45 +124,26 @@ const Works = () => {
                   placeholder="Your Email 123"
                 />
 
-                <FormControl
-                  isInvalid={formik.errors.message && formik.touched.message}
-                >
-                  <FormLabel htmlFor="message" mt={4}>
-                    Message
-                    <span style={{ color: asteriskColor }}>&nbsp;*</span>
-                  </FormLabel>
-                  <Textarea
-                    {...formik.getFieldProps("message")}
-                    id="message"
-                    name="message"
-                    placeholder="Message for me!"
-                    overflow="auto"
-                    overflowX="hidden"
-                    focusBorderColor={focusBorderColor}
-                    errorBorderColor={errorBorderColor}
-                    resize="none"
-                    css={{
-                      "&::-webkit-scrollbar": {
-                        width: "6px",
-                      },
-                      "&::-webkit-scrollbar-thumb": {
-                        background: scrollbarThumbBg,
-                        borderRadius: "4px",
-                      },
-                      "&::-webkit-scrollbar-track": {
-                        background: "transparent",
-                      },
-                    }}
-                  />
+                <CustomTextarea
+                  htmlFor="message"
+                  label="Message"
+                  id="message"
+                  name="message"
+                  placeholder="Message for me!"
+                />
 
-                  <AnimatePresence>
-                    {formik.errors.message && formik.touched.message && (
-                      <AnimatedFormErrorMessage>
-                        {formik.errors.message}
-                      </AnimatedFormErrorMessage>
-                    )}
-                  </AnimatePresence>
-                </FormControl>
+                <CustomProgressBar>
+                  {!(formik.isValid && formik.dirty) && <ProgressBarColor />}
+                  {!formik.errors.name && formik.touched.name && (
+                    <ProgressBarValue />
+                  )}
+                  {!formik.errors.email && formik.touched.email && (
+                    <ProgressBarValue />
+                  )}
+                  {!formik.errors.message && formik.touched.message && (
+                    <ProgressBarValue />
+                  )}
+                </CustomProgressBar>
 
                 <Button
                   onClick={onOpen}
