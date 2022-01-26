@@ -16,7 +16,7 @@ const StyledP = chakra(motion.p, {
 });
 
 const AnimatedFormErrorMessage = ({ children, ...props }) => {
-  const color = useColorModeValue("red.500", "fushsia.400");
+  const color = useColorModeValue("red.500", "rose.500");
 
   return (
     <StyledP

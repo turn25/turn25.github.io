@@ -28,7 +28,7 @@ import WorksPageData from "../../data/works-page";
 
 const Post = ({ post }) => {
   const boxBg = useColorModeValue("whiteAlpha.600", "whiteAlpha.200");
-  const iconColor = useColorModeValue("#3d7aed", "#ff7acc");
+  const iconColor = useColorModeValue("blue.500", "rose.300");
 
   const {
     id: path,

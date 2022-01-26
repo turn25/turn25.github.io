@@ -119,8 +119,8 @@ const CustomInput = ({ htmlFor, label, type, icon, ...props }) => {
   const autofillColor = useColorModeValue("#f7fafc", "#475569");
   const focusLabelColor = useColorModeValue("#3b82f6", "#14b8a6");
   const focusColor = useColorModeValue("#000", "#f7fafc");
-  const invalidUnderlineColor = useColorModeValue("#e53e3e", "#805AD5");
-  const checkColor = useColorModeValue("green.500", "pink.500");
+  const invalidUnderlineColor = useColorModeValue("#e53e3e", "#f43f5e");
+  const checkColor = useColorModeValue("green.500", "lime.400");
 
   const error = () => {
     return meta.error && meta.touched;

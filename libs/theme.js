@@ -23,12 +23,15 @@ const components = {
         marginTop: 3,
         marginBottom: 4,
       }),
+      "post-title": (props) => ({
+        color: mode("blue.500", "rose.500")(props),
+      }),
     },
   },
   // Update base style
   Button: {
     baseStyle: (props) => ({
-      color: mode("#3d7aed", "#ff7acc")(props),
+      color: mode("blue.500", "pink.400")(props),
       // outline
       _focus: {
         boxShadow: mode(
@@ -41,7 +44,7 @@ const components = {
     // override existing variants
     variants: {
       ghost: (props) => ({
-        color: mode("#3d7aed", "#ff7acc")(props),
+        color: mode("teal.500", "teal.300")(props),
       }),
 
       // Icon Button
@@ -76,7 +79,7 @@ const components = {
 
   Link: {
     baseStyle: (props) => ({
-      color: mode("#3d7aed", "#ff7acc")(props),
+      color: mode("blue.500", "pink.400")(props),
       // outline
       _focus: {
         boxShadow: mode(
@@ -97,12 +100,6 @@ const components = {
       },
     }),
   },
-
-  BreadcrumbLink: {
-    baseStyle: (props) => ({
-      color: mode("#3d7aed", "#ff7acc")(props),
-    }),
-  },
 };
 
 const fonts = {
@@ -110,6 +107,31 @@ const fonts = {
 };
 
 const colors = {
+  // Tailwind Color
+  lime: {
+    50: "#f7fee7",
+    100: "#ecfccb",
+    200: "#d9f99d",
+    300: "#bef264",
+    400: "#a3e635",
+    500: "#84cc16",
+    600: "#65a30d",
+    700: "#4d7c0f",
+    800: "#3f6212",
+    900: "#365314",
+  },
+  indigo: {
+    50: "#eef2ff",
+    100: "#e0e7ff",
+    200: "#c7d2fe",
+    300: "#a5b4fc",
+    400: "#818cf8",
+    500: "#6366f1",
+    600: "#4f46e5",
+    700: "#4338ca",
+    800: "#3730a3",
+    900: "#312e81",
+  },
   violet: {
     50: "#f5f3ff",
     100: "#ede9fe",
@@ -133,6 +155,18 @@ const colors = {
     700: "#a21caf",
     800: "#86198f",
     900: "#701a75",
+  },
+  pink: {
+    50: "#fdf2f8",
+    100: "#fce7f3",
+    200: "#fbcfe8",
+    300: "#f9a8d4",
+    400: "#f472b6",
+    500: "#ec4899",
+    600: "#db2777",
+    700: "#be185d",
+    800: "#9d174d",
+    900: "#831843",
   },
   rose: {
     50: "#fff1f2",

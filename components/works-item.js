@@ -81,7 +81,11 @@ export const WorkBreadCrumb = ({ path, title, year, ...props }) => {
         </BreadcrumbItem>
 
         <BreadcrumbItem cursor="default">
-          <Heading as="h2" fontSize={{ base: "lg", sm: "xl" }}>
+          <Heading
+            as="h2"
+            fontSize={{ base: "lg", sm: "xl" }}
+            variant="post-title"
+          >
             {title}
             <Badge
               ml={1}

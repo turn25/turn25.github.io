@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { chakra, shouldForwardProp } from "@chakra-ui/react";
 
 // converts non-chakra components to chakra-enabled components
-const StyledMotionDiv = chakra(motion.div, {
+export const StyledMotionDiv = chakra(motion.div, {
   shouldForwardProp: (prop) => {
     const isChakraProp = shouldForwardProp(prop); // chakra ui props
     const motionDivProp = "transition";

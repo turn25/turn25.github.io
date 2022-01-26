@@ -12,16 +12,17 @@ import emailjs from "@emailjs/browser";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { RiUser3Line, RiMailLine } from "react-icons/ri";
+import { AnimatePresence } from "framer-motion";
 
 import Layout from "../components/layouts/layout";
 import CustomAlertDialog from "../components/custom-alert-dialog";
 import CustomInput from "../components/custom-input";
 import CustomTextarea from "../components/custom-textarea";
 import {
-  ProgressBarColor,
-  CustomProgressBar,
-  ProgressBarValue,
-} from "../components/custom-progress-bar";
+  FormProgressWrapper,
+  FormProgress,
+  FormProgressValue,
+} from "../components/custom-form-progress";
 
 const Works = () => {
   const toast = useToast();
@@ -97,7 +98,6 @@ const Works = () => {
               // handle submit
               setTimeout(() => {
                 sendEmail(values);
-                // console.log(values);
                 setSubmitting(false);
               }, 1000);
             }}
@@ -132,18 +132,28 @@ const Works = () => {
                   placeholder="Message for me!"
                 />
 
-                <CustomProgressBar>
-                  {!(formik.isValid && formik.dirty) && <ProgressBarColor />}
-                  {!formik.errors.name && formik.touched.name && (
-                    <ProgressBarValue />
-                  )}
-                  {!formik.errors.email && formik.touched.email && (
-                    <ProgressBarValue />
-                  )}
-                  {!formik.errors.message && formik.touched.message && (
-                    <ProgressBarValue />
-                  )}
-                </CustomProgressBar>
+                <FormProgressWrapper>
+                  <FormProgress>
+                    <AnimatePresence initial={false}>
+                      {!formik.errors.name && formik.touched.name && (
+                        <FormProgressValue />
+                      )}
+                    </AnimatePresence>
+                  </FormProgress>
+
+                  <FormProgress>
+                    <AnimatePresence>
+                      {!formik.errors.email && formik.touched.email && (
+                        <FormProgressValue />
+                      )}
+                    </AnimatePresence>
+                  </FormProgress>
+                  <FormProgress>
+                    {!formik.errors.message && formik.touched.message && (
+                      <FormProgressValue />
+                    )}
+                  </FormProgress>
+                </FormProgressWrapper>
 
                 <Button
                   onClick={onOpen}

@@ -1,7 +1,7 @@
 import { chakra, useColorModeValue, Tooltip } from "@chakra-ui/react";
 
 const CustomLabelAsterisk = ({ ...props }) => {
-  const color = useColorModeValue("red.500", "purple.500");
+  const color = useColorModeValue("red.500", "rose.500");
 
   return (
     <Tooltip
