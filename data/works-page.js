@@ -1,17 +1,17 @@
-import thumbnailTindog from "../public/images/works/tindog.png";
+import thumbnailTindog from "../public/images/works/tindog.jpg";
 import thumbnailDiceeGame from "../public/images/works/dicee-game.png";
 import thumbnailSimonGame from "../public/images/works/simon-game1.png";
 import thumbnailEmojipedia from "../public/images/works/emojipedia1.png";
 import thumbnailNoteKeeper from "../public/images/works/note-keeper3.png";
 import thumbnailWeatherApp from "../public/images/works/weather-app1.png";
 import thumbnailSortingVisualizerDemo from "../public/images/works/sorting-visualizer-demo1.png";
-import thumbnailTeslaClone from "../public/images/works/tesla-clone1.png";
-import thumbnailDisneyPlusClone from "../public/images/works/disney-plus-clone1.png";
+import thumbnailTeslaClone from "../public/images/works/tesla-clone1.jpg";
+import thumbnailDisneyPlusClone from "../public/images/works/disney-plus-clone1.jpg";
 import thumbnailSpotifyClone from "../public/images/works/spotify-clone1.png";
 import thumbnailGoogleCalendar from "../public/images/works/google-calendar-clone1.png";
 import thumbnailSortingVisualizer from "../public/images/works/sorting-visualizer1.png";
 import thumbnailTypingSpeed from "../public/images/works/typing-speed2.png";
-import thumbnailYouShare from "../public/images/works/youshare1.png";
+import thumbnailYouShare from "../public/images/works/youshare1.jpg";
 
 const WorksPageData = [
   {
@@ -63,13 +63,13 @@ const WorksPageData = [
     ],
     createdYear: 2022,
     images: [
-      "/images/works/youshare1.png",
-      "/images/works/youshare2.png",
-      "/images/works/youshare3.png",
-      "/images/works/youshare4.png",
-      "/images/works/youshare5.png",
-      "/images/works/youshare6.png",
-      "/images/works/youshare7.png",
+      "/images/works/youshare1.jpg",
+      "/images/works/youshare2.jpg",
+      "/images/works/youshare3.jpg",
+      "/images/works/youshare4.jpg",
+      "/images/works/youshare5.jpg",
+      "/images/works/youshare6.jpg",
+      "/images/works/youshare7.jpg",
     ],
     liveDemo: "https://youshare.netlify.app/",
     source: "https://github.com/vuquangtuan123/typing-speed",
@@ -186,10 +186,10 @@ const WorksPageData = [
     features: ["Responsive Design"],
     createdYear: 2021,
     images: [
-      "/images/works/disney-plus-clone1.png",
-      "/images/works/disney-plus-clone2.png",
-      "/images/works/disney-plus-clone3.png",
-      "/images/works/disney-plus-clone4.png",
+      "/images/works/disney-plus-clone1.jpg",
+      "/images/works/disney-plus-clone2.jpg",
+      "/images/works/disney-plus-clone3.jpg",
+      "/images/works/disney-plus-clone4.jpg",
     ],
     liveDemo: "https://tuanvu-disneyplus-clone.vercel.app/",
     source: "https://github.com/vuquangtuan123/disney-plus-clone",
@@ -203,9 +203,9 @@ const WorksPageData = [
     features: ["Responsive Design"],
     createdYear: 2021,
     images: [
-      "/images/works/tesla-clone1.png",
+      "/images/works/tesla-clone1.jpg",
       "/images/works/tesla-clone2.png",
-      "/images/works/tesla-clone3.png",
+      "/images/works/tesla-clone3.jpg",
     ],
     liveDemo: "https://tuanvu-testla-clone.netlify.app",
     source: "https://github.com/vuquangtuan123/tesla-clone",
@@ -317,7 +317,7 @@ const WorksPageData = [
     description: "A simple Landing Page",
     features: ["Responsive Design"],
     createdYear: 2021,
-    images: ["/images/works/tindog.png"],
+    images: ["/images/works/tindog.jpg"],
     builtWith: [
       { name: "HTML" },
       { name: "Bootstrap", destination: "https://getbootstrap.com" },
