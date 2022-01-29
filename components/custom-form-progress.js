@@ -10,7 +10,7 @@ export const FormProgressWrapper = ({ children, ...props }) => {
       w="100%"
       h="18px"
       mt={6}
-      spacing={5}
+      spacing={{ base: 3, md: 6 }}
       {...props}
     >
       {children}

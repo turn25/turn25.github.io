@@ -44,7 +44,7 @@ const components = {
     // override existing variants
     variants: {
       ghost: (props) => ({
-        color: mode("teal.500", "teal.300")(props),
+        color: mode("indigo.500", "teal.300")(props),
       }),
 
       // Icon Button

@@ -40,11 +40,12 @@ import {
 } from "../components/education-section";
 import HobbyItem from "../components/hobby-item";
 import Layout from "../components/layouts/layout";
+import RecentProjects from "../components/recent-projects";
 
 const StyledBox = chakra(motion.div);
 
 const Page = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, onToggle } = useDisclosure();
   const [animate, cycle] = useCycle(
     { scale: 1, rotate: 0 },
     { scale: 1.1, rotate: 360 }
@@ -159,6 +160,7 @@ const Page = () => {
             Started studying at UIT.
           </EducationSection>
         </Section>
+
         <Section delay={0.3}>
           <Heading as="h3" variant="section-title">
             Web
@@ -214,61 +216,76 @@ const Page = () => {
             </ListItem>
           </List>
         </Section>
+
         <Section delay={0.4}>
           <Heading as="h3" variant="section-title">
             Hobby
           </Heading>
 
           <AnimatePresence exitBeforeEnter initial={false}>
-            <motion.div
-              key={isOpen}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.4, type: "easeInOut" }}
+            <SimpleGrid
+              columns={[1, 2, 3]}
+              spacingX="25px"
+              spacingY="15px"
+              p="1rem"
             >
-              {!isOpen ? (
-                <Center>
-                  <Button
-                    onClick={onOpen}
-                    rightIcon={<ChevronRightIcon />}
-                    colorScheme={buttonColorScheme}
-                    w="140px"
-                  >
-                    I Also Like
-                  </Button>
-                </Center>
-              ) : (
-                <SimpleGrid
-                  columns={[1, 2, 3]}
-                  spacingX="25px"
-                  spacingY="15px"
-                  p="1rem"
-                >
-                  <HobbyItem icon={MdMovieFilter} onClick={onClose} delay={0}>
-                    Anime
-                  </HobbyItem>
-                  <HobbyItem icon={AiFillRead} onClick={onClose} delay={0.1}>
-                    Manga
-                  </HobbyItem>
-                  <HobbyItem icon={RiMusic2Fill} onClick={onClose} delay={0.2}>
-                    Music
-                  </HobbyItem>
-                  <HobbyItem icon={GiDonut} onClick={onClose} delay={0.3}>
-                    3D Render
-                  </HobbyItem>
-                  <HobbyItem icon={RiGameFill} onClick={onClose} delay={0.4}>
-                    Video Game
-                  </HobbyItem>
-                  <HobbyItem icon={FaGuitar} onClick={onClose} delay={0.5}>
-                    Playing Guitar
-                  </HobbyItem>
-                </SimpleGrid>
-              )}
-            </motion.div>
+              <HobbyItem
+                icon={MdMovieFilter}
+                isOpen={isOpen}
+                onClick={onToggle}
+                delay={0}
+              >
+                Anime
+              </HobbyItem>
+              <HobbyItem
+                icon={AiFillRead}
+                isOpen={isOpen}
+                onClick={onToggle}
+                delay={0.1}
+              >
+                Manga
+              </HobbyItem>
+              <HobbyItem
+                icon={RiMusic2Fill}
+                isOpen={isOpen}
+                onClick={onToggle}
+                delay={0.2}
+              >
+                Music
+              </HobbyItem>
+              <HobbyItem
+                icon={GiDonut}
+                isOpen={isOpen}
+                onClick={onToggle}
+                delay={0.3}
+              >
+                3D Render
+              </HobbyItem>
+              <HobbyItem
+                icon={RiGameFill}
+                isOpen={isOpen}
+                onClick={onToggle}
+                delay={0.4}
+              >
+                Video Game
+              </HobbyItem>
+              <HobbyItem
+                icon={FaGuitar}
+                isOpen={isOpen}
+                onClick={onToggle}
+                delay={0.5}
+              >
+                Playing Guitar
+              </HobbyItem>
+            </SimpleGrid>
           </AnimatePresence>
         </Section>
+
         <Section delay={0.5}>
+          <RecentProjects />
+        </Section>
+
+        <Section delay={0.6}>
           <Heading as="h3" variant="section-title">
             Contact
           </Heading>

@@ -176,7 +176,7 @@ const Navbar = ({ path }) => {
                   },
                 }}
               >
-                <VStack align="stretch" spacing={24}>
+                <VStack align="stretch" spacing={{ base: 20, md: 24 }}>
                   <Section initY={30} delay={0.1}>
                     <VStack align="stretch" spacing={4} flex={1}>
                       <DrawerLinkBtn

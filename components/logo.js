@@ -1,4 +1,4 @@
-import Link from "next/link";
+import NextLink from "next/link";
 import Image from "next/image";
 import { Text, useColorModeValue } from "@chakra-ui/react";
 import { LogoBox } from "./logo-box";
@@ -9,7 +9,7 @@ const Logo = () => {
   const textColor = useColorModeValue("gray.800", "whiteAlpha.900");
 
   return (
-    <Link href="/" passHref>
+    <NextLink href="/" passHref>
       <LogoBox underlineBgColor={underlineBgColor}>
         <Image src={handImg} alt="Logo" width={20} height={20} />
         <Text
@@ -22,7 +22,7 @@ const Logo = () => {
           Tuan Vu
         </Text>
       </LogoBox>
-    </Link>
+    </NextLink>
   );
 };
 
