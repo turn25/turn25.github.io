@@ -169,7 +169,7 @@ const Page = () => {
           <List>
             <ListItem>
               <Link
-                href="https://github.com/vuquangtuan123"
+                href="https://github.com/turn25"
                 target="_blank"
                 style={{ textDecoration: "none" }}
               >
@@ -178,14 +178,14 @@ const Page = () => {
                   variant="ghost"
                   colorScheme={useColorModeValue("blue", "gray")} // color.200
                 >
-                  vuquangtuan123
+                  turn25
                 </Button>
               </Link>
             </ListItem>
 
             <ListItem>
               <Link
-                href="https://twitter.com/tuanvuq123"
+                href="https://twitter.com/tuanv234"
                 target="_blank"
                 style={{ textDecoration: "none" }}
               >
@@ -194,7 +194,7 @@ const Page = () => {
                   variant="ghost"
                   colorScheme={useColorModeValue("blue", "gray")} // color.200
                 >
-                  @tuanvuq123
+                  @tuanv234
                 </Button>
               </Link>
             </ListItem>

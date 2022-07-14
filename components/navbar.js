@@ -99,7 +99,7 @@ const Navbar = ({ path }) => {
             Contact
           </LinkItem>
           <LinkItem
-            href="https://github.com/vuquangtuan123"
+            href="https://github.com/turn25"
             path={path}
             target="_blank"
             px={2}
@@ -210,7 +210,7 @@ const Navbar = ({ path }) => {
                       </DrawerLinkBtn>
 
                       <DrawerLinkBtn
-                        href="https://github.com/vuquangtuan123"
+                        href="https://github.com/turn25"
                         path={path}
                         onClick={handleCloseDrawer}
                         leftIcon={<RiGithubFill />}

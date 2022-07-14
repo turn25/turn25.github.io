@@ -38,8 +38,8 @@ const WorksPageData = [
       "/images/works/typing-speed4.png",
       "/images/works/typing-speed5.png",
     ],
-    liveDemo: "https://vuquangtuan123.github.io/typing-speed/",
-    source: "https://github.com/vuquangtuan123/typing-speed",
+    liveDemo: "https://turn25.github.io/typing-speed/",
+    source: "https://github.com/turn25/typing-speed",
     builtWith: ["ReactJS", "Chakra UI", "Framer Motion"],
     builtWith: [
       { name: "ReactJS", destination: "https://reactjs.org" },
@@ -72,7 +72,7 @@ const WorksPageData = [
       "/images/works/youshare7.jpg",
     ],
     liveDemo: "https://youshare.netlify.app/",
-    source: "https://github.com/vuquangtuan123/typing-speed",
+    source: "https://github.com/turn25/typing-speed",
     builtWith: [
       { name: "ReactJS", destination: "https://reactjs.org" },
       { name: "TailwindCSS", destination: "https://tailwindcss.com" },
@@ -110,8 +110,8 @@ const WorksPageData = [
       "/images/works/sorting-visualizer2.gif",
       "/images/works/sorting-visualizer3.gif",
     ],
-    liveDemo: "https://vuquangtuan123.github.io/sorting-visualizer",
-    source: "https://github.com/vuquangtuan123/sorting-visualizer",
+    liveDemo: "https://turn25.github.io/sorting-visualizer",
+    source: "https://github.com/turn25/sorting-visualizer",
     builtWith: [
       { name: "ReactJS", destination: "https://reactjs.org" },
       { name: "TailwindCSS", destination: "https://tailwindcss.com" },
@@ -141,7 +141,7 @@ const WorksPageData = [
       "/images/works/google-calendar-clone3.png",
     ],
     liveDemo: "https://tuanvu-calendar.vercel.app",
-    source: "https://github.com/vuquangtuan123/google-calendar-clone",
+    source: "https://github.com/turn25/google-calendar-clone",
     builtWith: [
       { name: "ReactJS", destination: "https://reactjs.org" },
       { name: "DayJS", destination: "https://day.js.org" },
@@ -171,7 +171,7 @@ const WorksPageData = [
       "/images/works/spotify-clone3.png",
     ],
     liveDemo: "https://tuanvu-spotify.vercel.app",
-    source: "https://github.com/vuquangtuan123/spotify-clone",
+    source: "https://github.com/turn25/spotify-clone",
     builtWith: [
       { name: "ReactJS", destination: "https://reactjs.org" },
       { name: "NextJS", destination: "https://nextjs.org" },
@@ -192,7 +192,7 @@ const WorksPageData = [
       "/images/works/disney-plus-clone4.jpg",
     ],
     liveDemo: "https://tuanvu-disneyplus-clone.vercel.app/",
-    source: "https://github.com/vuquangtuan123/disney-plus-clone",
+    source: "https://github.com/turn25/disney-plus-clone",
     builtWith: [{ name: "ReactJS", destination: "https://reactjs.org" }],
   },
   {
@@ -208,7 +208,7 @@ const WorksPageData = [
       "/images/works/tesla-clone3.jpg",
     ],
     liveDemo: "https://tuanvu-testla-clone.netlify.app",
-    source: "https://github.com/vuquangtuan123/tesla-clone",
+    source: "https://github.com/turn25/tesla-clone",
     builtWith: [{ name: "ReactJS", destination: "https://reactjs.org" }],
   },
   {
@@ -250,8 +250,8 @@ const WorksPageData = [
       "/images/works/weather-app2.png",
       "/images/works/weather-app3.png",
     ],
-    liveDemo: "https://vuquangtuan123.github.io/weather-app-fetch",
-    source: "https://github.com/vuquangtuan123/weather-app-fetch",
+    liveDemo: "https://turn25.github.io/weather-app-fetch",
+    source: "https://github.com/turn25/weather-app-fetch",
     builtWith: [{ name: "ReactJS", destination: "https://reactjs.org" }],
   },
   {
@@ -267,7 +267,7 @@ const WorksPageData = [
       "/images/works/note-keeper3.png",
     ],
     liveDemo: "https://simple-keeper-app.netlify.app",
-    source: "https://github.com/vuquangtuan123/simple-keeper-app",
+    source: "https://github.com/turn25/simple-keeper-app",
     builtWith: [
       { name: "ReactJS", destination: "https://reactjs.org" },
       { name: "Material UI", destination: "https://mui.com/" },
@@ -281,7 +281,7 @@ const WorksPageData = [
     createdYear: 2021,
     images: ["/images/works/emojipedia1.png"],
     liveDemo: "https://tuanvu-emojipedia.netlify.app",
-    source: "https://github.com/vuquangtuan123/emojipedia",
+    source: "https://github.com/turn25/emojipedia",
     builtWith: [{ name: "ReactJS", destination: "https://reactjs.org" }],
   },
   {
@@ -296,8 +296,8 @@ const WorksPageData = [
     description: "A simple Simon Game",
     createdYear: 2021,
     images: ["/images/works/simon-game1.png", "/images/works/simon-game2.png"],
-    liveDemo: "https://vuquangtuan123.github.io/simon-game/",
-    source: "https://github.com/vuquangtuan123/simon-game",
+    liveDemo: "https://turn25.github.io/simon-game/",
+    source: "https://github.com/turn25/simon-game",
     builtWith: [{ name: "HTML" }, { name: "CSS" }, { name: "Javascript" }],
   },
   {
