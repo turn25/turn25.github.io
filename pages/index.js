@@ -124,11 +124,11 @@ const Page = () => {
           <Paragraph>
             I&apos;m a front-end web developer based in Vietnam. I love modern
             Javascript library, framework like{" "}
-            <Link href="https://www.reactjs.org" tagert="_blank">
+            <Link href="https://www.reactjs.org" target="_blank">
               React
             </Link>
             {`, `}
-            <Link href="https://reactnative.dev" tagert="_blank">
+            <Link href="https://reactnative.dev" target="_blank">
               React Native
             </Link>
             {`, `}
