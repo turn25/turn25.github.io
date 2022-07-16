@@ -123,7 +123,7 @@ const Page = () => {
 
           <Paragraph>
             I&apos;m a front-end web developer based in Vietnam. I love modern
-            Javascript library, framework like{" "}
+            Javascript libraries, frameworks like{" "}
             <Link href="https://www.reactjs.org" target="_blank">
               React
             </Link>
@@ -131,12 +131,12 @@ const Page = () => {
             <Link href="https://reactnative.dev" target="_blank">
               React Native
             </Link>
-            {`, `}
+            {` and `}
             <Link href="https://vuejs.org" target="_blank">
               Vue.js
             </Link>
-            . Experience in building cross-browser, mobile compatible with
-            responsive design.
+            . I have experience in building cross-browser, mobile compatible
+            with responsive design.
           </Paragraph>
 
           <Center my={5}>
