@@ -12,6 +12,7 @@ import thumbnailGoogleCalendar from "../public/images/works/google-calendar-clon
 import thumbnailSortingVisualizer from "../public/images/works/sorting-visualizer1.png";
 import thumbnailTypingSpeed from "../public/images/works/typing-speed2.png";
 import thumbnailYouShare from "../public/images/works/youshare1.jpg";
+import thumbnailTodoApp from "../public/images/works/to-do-app1.png";
 import thumbnailiTrendingAgency from "../public/images/works/itrending-agency1.png";
 import thumbnailDeGlory from "../public/images/works/de-glory2.png";
 import thumbnailGameTuoiTho from "../public/images/works/game-tuoi-tho1.png";
@@ -50,6 +51,10 @@ const WorksPageData = [
       { name: "Chakra UI", destination: "https://chakra-ui.com/" },
       { name: "React Router", destination: "https://reactrouter.com/" },
       { name: "Directus", destination: "https://directus.io" },
+      {
+        name: "Zustand",
+        destination: "https://docs.pmnd.rs/zustand/introduction",
+      },
     ],
   },
   {
@@ -83,6 +88,7 @@ const WorksPageData = [
       { name: "NextJS", destination: "https://nextjs.org" },
       { name: "Material UI", destination: "https://mui.com" },
       { name: "Directus", destination: "https://directus.io" },
+      { name: "Redux", destination: "https://redux.js.org" },
     ],
   },
   {
@@ -131,6 +137,30 @@ const WorksPageData = [
     builtWith: [
       { name: "Wordpress", destination: "https://wordpress.com/" },
       { name: "Elementor", destination: "https://elementor.com/" },
+    ],
+  },
+  {
+    id: "to-do-app",
+    thumbnail: thumbnailTodoApp,
+    title: "To Do App",
+    description: "React Native Expo Todo App",
+    features: [
+      "Support Dark Theme",
+      "Count Todos Done, Todos Left",
+      "Uncheck And Check Todo Animation",
+      "Delete Animation",
+    ],
+    createdYear: 2022,
+    images: [
+      "/images/works/to-do-app1.png",
+      "/images/works/to-do-app2.png",
+      "/images/works/to-do-app3.png",
+      "/images/works/to-do-app4.png",
+    ],
+    builtWith: [
+      { name: "React Native", destination: "https://reactnative.dev" },
+      { name: "Expo", destination: "https://docs.expo.dev" },
+      { name: "Native Base", destination: "https://nativebase.io" },
     ],
   },
   {
