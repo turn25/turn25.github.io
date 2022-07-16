@@ -12,14 +12,133 @@ import thumbnailGoogleCalendar from "../public/images/works/google-calendar-clon
 import thumbnailSortingVisualizer from "../public/images/works/sorting-visualizer1.png";
 import thumbnailTypingSpeed from "../public/images/works/typing-speed2.png";
 import thumbnailYouShare from "../public/images/works/youshare1.jpg";
+import thumbnailiTrendingAgency from "../public/images/works/itrending-agency1.png";
+import thumbnailDeGlory from "../public/images/works/de-glory2.png";
+import thumbnailGameTuoiTho from "../public/images/works/game-tuoi-tho1.png";
+import thumbnailGameTuoiThoConsole from "../public/images/works/game-tuoi-tho-console4.png";
 
 const WorksPageData = [
+  {
+    id: "game-tuoi-tho-console",
+    thumbnail: thumbnailGameTuoiThoConsole,
+    title: "Game Tuổi Thơ Console",
+    description:
+      "Gametuoitho app version that focus more on mobile user. Support gamepad input",
+    features: [
+      "Mobile Friendly Design",
+      "Gamepad And Keyboard Input Support",
+      "Allow Custom Keymapping",
+      "User Favorite Games Collection",
+      "Support Theme Switching",
+      "Support Vietnamese Search Filter",
+      "Fetch Data From CMS",
+      "Customize And Display WYSIWYG Data From CMS",
+    ],
+    createdYear: 2022,
+    images: [
+      "/images/works/game-tuoi-tho-console1.png",
+      "/images/works/game-tuoi-tho-console2.png",
+      "/images/works/game-tuoi-tho-console3.png",
+      "/images/works/game-tuoi-tho-console4.png",
+      "/images/works/game-tuoi-tho-console5.png",
+      "/images/works/game-tuoi-tho-console6.png",
+      "/images/works/game-tuoi-tho-console7.png",
+    ],
+    liveDemo: "https://beta.console.gametuoitho.vn/",
+    builtWith: [
+      { name: "ReactJS", destination: "https://reactjs.org" },
+      { name: "Chakra UI", destination: "https://chakra-ui.com/" },
+      { name: "React Router", destination: "https://reactrouter.com/" },
+      { name: "Directus", destination: "https://directus.io" },
+    ],
+  },
+  {
+    id: "game-tuoi-tho",
+    thumbnail: thumbnailGameTuoiTho,
+    title: "Game Tuổi Thơ",
+    description: "A website to play retro game right on your browser!",
+    features: [
+      "Responsive Design",
+      "Progressive Image Loading",
+      "Friendly Emulator UI/UX",
+      "Friendly Netplay UX (Multiplayer)",
+      "Support Vietnamese Search Filter",
+      "Fetch Data From CMS",
+      "Customize And Display WYSIWYG Data From CMS",
+      "Allow User Upload And Play Custom Rom",
+    ],
+    createdYear: 2022,
+    images: [
+      "/images/works/game-tuoi-tho1.png",
+      "/images/works/game-tuoi-tho2.png",
+      "/images/works/game-tuoi-tho3.png",
+      "/images/works/game-tuoi-tho4.png",
+      "/images/works/game-tuoi-tho5.png",
+      "/images/works/game-tuoi-tho6.png",
+      "/images/works/game-tuoi-tho7.png",
+      "/images/works/game-tuoi-tho8.png",
+    ],
+    liveDemo: "https://gametuoitho.vn/",
+    builtWith: [
+      { name: "NextJS", destination: "https://nextjs.org" },
+      { name: "Material UI", destination: "https://mui.com" },
+      { name: "Directus", destination: "https://directus.io" },
+    ],
+  },
+  {
+    id: "de-glory",
+    thumbnail: thumbnailDeGlory,
+    title: "De:Glory",
+    description: "De:Glory's Landing Page",
+    features: [
+      "Responsive Design",
+      "World Map Selection",
+      "Rotating Coverflow Slider Effect",
+      "Highlight Current Section In Header Bar",
+    ],
+    createdYear: 2022,
+    images: [
+      "/images/works/de-glory1.png",
+      "/images/works/de-glory2.png",
+      "/images/works/de-glory3.png",
+      "/images/works/de-glory4.png",
+      "/images/works/de-glory5.png",
+      "/images/works/de-glory6.png",
+      "/images/works/de-glory7.png",
+    ],
+    liveDemo: "https://glory.degaverse.com/",
+    builtWith: [
+      { name: "NextJS", destination: "https://nextjs.org" },
+      { name: "Material UI", destination: "https://mui.com" },
+      { name: "Bootstrap", destination: "https://getbootstrap.com" },
+      { name: "SwiperJS", destination: "https://swiperjs.com" },
+    ],
+  },
+  {
+    id: "itrending-agency",
+    thumbnail: thumbnailiTrendingAgency,
+    title: "iTrending Agency",
+    description: "iTrending Agency's Landing Page",
+    features: ["Responsive Design", "Support Dark Theme"],
+    createdYear: 2022,
+    images: [
+      "/images/works/itrending-agency1.png",
+      "/images/works/itrending-agency2.png",
+      "/images/works/itrending-agency3.png",
+      "/images/works/itrending-agency4.png",
+    ],
+    liveDemo: "https://itrending.vn/",
+    builtWith: [
+      { name: "Wordpress", destination: "https://wordpress.com/" },
+      { name: "Elementor", destination: "https://elementor.com/" },
+    ],
+  },
   {
     id: "typing-speed",
     thumbnail: thumbnailTypingSpeed,
     title: "Typing Speed App",
     description:
-      "An app to check your Word Per Minute(WPM) and help you improve your typing speed.",
+      "An app to check your Word Per Minute(WPM) and help you improve your typing speed",
     features: [
       "Responsive Design",
       "Support Dark Theme",
@@ -40,7 +159,6 @@ const WorksPageData = [
     ],
     liveDemo: "https://turn25.github.io/typing-speed/",
     source: "https://github.com/turn25/typing-speed",
-    builtWith: ["ReactJS", "Chakra UI", "Framer Motion"],
     builtWith: [
       { name: "ReactJS", destination: "https://reactjs.org" },
       { name: "Chakra UI", destination: "https://chakra-ui.com" },
