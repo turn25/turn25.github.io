@@ -44,7 +44,7 @@ const WorksPageData = [
       "/images/works/game-tuoi-tho-console6.png",
       "/images/works/game-tuoi-tho-console7.png",
     ],
-    liveDemo: "https://beta.console.gametuoitho.vn/",
+    liveDemo: "https://beta.console.gametuoitho.vn",
     builtWith: [
       { name: "ReactJS", destination: "https://reactjs.org" },
       { name: "Chakra UI", destination: "https://chakra-ui.com/" },
@@ -78,7 +78,7 @@ const WorksPageData = [
       "/images/works/game-tuoi-tho7.png",
       "/images/works/game-tuoi-tho8.png",
     ],
-    liveDemo: "https://gametuoitho.vn/",
+    liveDemo: "https://gametuoitho.vn",
     builtWith: [
       { name: "NextJS", destination: "https://nextjs.org" },
       { name: "Material UI", destination: "https://mui.com" },
@@ -106,7 +106,7 @@ const WorksPageData = [
       "/images/works/de-glory6.png",
       "/images/works/de-glory7.png",
     ],
-    liveDemo: "https://glory.degaverse.com/",
+    liveDemo: "https://glory.degaverse.com",
     builtWith: [
       { name: "NextJS", destination: "https://nextjs.org" },
       { name: "Material UI", destination: "https://mui.com" },
@@ -127,7 +127,7 @@ const WorksPageData = [
       "/images/works/itrending-agency3.png",
       "/images/works/itrending-agency4.png",
     ],
-    liveDemo: "https://itrending.vn/",
+    liveDemo: "https://itrending.vn",
     builtWith: [
       { name: "Wordpress", destination: "https://wordpress.com/" },
       { name: "Elementor", destination: "https://elementor.com/" },
@@ -157,7 +157,7 @@ const WorksPageData = [
       "/images/works/typing-speed4.png",
       "/images/works/typing-speed5.png",
     ],
-    liveDemo: "https://turn25.github.io/typing-speed/",
+    liveDemo: "https://turn25.github.io/typing-speed",
     source: "https://github.com/turn25/typing-speed",
     builtWith: [
       { name: "ReactJS", destination: "https://reactjs.org" },
@@ -189,7 +189,7 @@ const WorksPageData = [
       "/images/works/youshare6.jpg",
       "/images/works/youshare7.jpg",
     ],
-    liveDemo: "https://youshare.netlify.app/",
+    liveDemo: "https://youshare.netlify.app",
     source: "https://github.com/turn25/typing-speed",
     builtWith: [
       { name: "ReactJS", destination: "https://reactjs.org" },
