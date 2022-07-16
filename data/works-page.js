@@ -202,11 +202,11 @@ const WorksPageData = [
     thumbnail: thumbnailSortingVisualizer,
     title: "Sorting Visualizer",
     description:
-      "An app to visualize classic sorting algorithms such as buble sort, merge sort, quick sort, heap sort,etc...",
+      "An app to visualize classic sorting algorithms such as bubble sort, merge sort, quick sort, heap sort,etc...",
     features: [
       "Responsive Design",
       "Selection Sort Visualizer",
-      "Buble Sort Visualizer",
+      "Bubble Sort Visualizer",
       "Insertion Sort Visualizer",
       "Shell Sort Visualizer",
       "Quick Sort Visualizer",

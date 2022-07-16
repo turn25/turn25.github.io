@@ -122,9 +122,21 @@ const Page = () => {
           </Heading>
 
           <Paragraph>
-            I&#39;m a college student and a front-end web developer. Currently,
-            I&#39;m studying at University of Information Technology&nbsp;
-            <Link href="https://www.uit.edu.vn/">(UIT)</Link>.
+            I&apos;m a front-end web developer based in Vietnam. I love modern
+            Javascript library, framework like{" "}
+            <Link href="https://www.reactjs.org" tagert="_blank">
+              React
+            </Link>
+            {`, `}
+            <Link href="https://reactnative.dev" tagert="_blank">
+              React Native
+            </Link>
+            {`, `}
+            <Link href="https://vuejs.org" target="_blank">
+              Vue.js
+            </Link>
+            . Experience in building cross-browser, mobile compatible with
+            responsive design.
           </Paragraph>
 
           <Center my={5}>
@@ -157,7 +169,7 @@ const Page = () => {
           </EducationSection>
           <EducationSection>
             <EducationYear>2019</EducationYear>
-            Started studying at UIT.
+            University of Information Technology
           </EducationSection>
         </Section>
 
